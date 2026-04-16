@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from datetime import date
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -72,7 +73,7 @@ class IncomingCorrespondence(models.Model):
     source_external = models.CharField(max_length=100, blank=True, null=True)
     received_date  = models.DateField(default=date.today)
     filed = models.BooleanField(default=False)
-    #file = CloudinaryField('file', resource_type="raw", allowed_formats=['pdf'], blank=False)
+    file = CloudinaryField('file', resource_type="raw", allowed_formats=['pdf'], blank=True, null=True)
     created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
@@ -97,7 +98,7 @@ class Letters(models.Model):
     reference_number = models.CharField(max_length=10)
     receipient = models.CharField(max_length=150, blank=True, null=True)
     date_sent= models.DateField(default=date.today)
-    #file=CloudinaryField('file', resource_type="raw", allowed_formats=['pdf'], blank=False)
+    file = CloudinaryField('file', resource_type="raw", allowed_formats=['pdf'], blank=True, null=True)
     created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL,null=True )
 
     def __str__(self):
