@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'cloudinary', 
     'cloudinary_storage',
-    'django_filters'
+    'django_filters', 
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -160,7 +161,11 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': False,
     'USER_CREATE_PASSWORD_RETYPE': True,
     'SEND_CONFIRMATION_EMAIL': False,
-    'SERIALIZERS': {},
+    'SERIALIZERS': {
+        'user': 'correspondence.serializer.UserSerializer',
+        'current_user': 'correspondence.serializer.UserSerializer',
+        'user_create': 'correspondence.serializer.UserSerializer',
+    },
 }
 
 
