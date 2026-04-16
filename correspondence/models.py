@@ -7,8 +7,16 @@ from cloudinary.models import CloudinaryField
 
 
 class Department(models.Model):
+
+    CHOICES = [
+        ('INTERNAL', 'Internal'),
+        ('REGIONAL', 'Regional'),
+        ('EXT_FREQUENT', 'External_Frequent'),
+        ('EXTERNAL', 'External'), 
+    ]
     name = models.CharField(max_length=100, blank=False)
     code = models.CharField(max_length=10, blank=False)
+    type = models.CharField(max_length=15, choices=CHOICES, null=True)
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
