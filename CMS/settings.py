@@ -166,6 +166,10 @@ DJOSER = {
         'current_user': 'correspondence.serializer.UserSerializer',
         'user_create': 'correspondence.serializer.UserCreateSerializer',
     },
+    'PERMISSIONS': {
+        'user_list': ['rest_framework.permissions.IsAdminUser'],
+        'user': ['rest_framework.permissions.IsAdminUser'],
+    },
 }
 
 
