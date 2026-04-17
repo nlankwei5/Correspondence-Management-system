@@ -6,14 +6,16 @@ from .models import *
 class DepartmentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Department
-        fields = ['name']
+        fields = ['id', 'name', 'code', 'type']
 
 
 
 class UserSerializer(serializers.ModelSerializer):
     department = serializers.PrimaryKeyRelatedField(
         queryset=Department.objects.all(),
-        required=True
+        required=False,
+        allow_null=True,
+        read_only=True, 
     )
     department_details = DepartmentSerializer(source='department', read_only=True)
 
@@ -22,10 +24,28 @@ class UserSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'email', 'username',
             'first_name', 'last_name',
+            'is_active',
             'department',          
             'department_details'   
         ]
+        read_only_fields = ['is_active']
 
+class UserCreateSerializer(serializers.ModelSerializer):
+    password = serializers.CharField(write_only=True)
+    re_password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = CustomUser
+        fields = ['email', 'username', 'first_name', 'last_name', 
+                    'department', 'password', 're_password']
+
+    def validate(self, attrs):
+        if attrs['password'] != attrs.pop('re_password'):
+            raise serializers.ValidationError("Passwords do not match.")
+        return attrs
+
+    def create(self, validated_data):
+        return CustomUser.objects.create_user(**validated_data)
 
 
 class IncomingSerializer(serializers.ModelSerializer):

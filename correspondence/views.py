@@ -14,7 +14,7 @@ class IncomingViewSet(viewsets.ModelViewSet):
     queryset = IncomingCorrespondence.objects.all()
     serializer_class = IncomingSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter,OrderingFilter]
-    filterset_fields = ['received_date']
+    filterset_fields = ['received_date', 'filed', 'source']
     search_fields = ['subject']
     ordering_fields = ['received_date'] 
     permission_classes = [IsAuthenticated]
@@ -27,7 +27,7 @@ class DispatchViewSet(viewsets.ModelViewSet):
     queryset = Dispatch.objects.all()
     serializer_class = DispatchSerializer
     filter_backends = [DjangoFilterBackend, SearchFilter,OrderingFilter]
-    filterset_fields = ['dispatch_date', 'approval']
+    filterset_fields = ['dispatch_date', 'approval', 'filed']
     search_fields = ['subject']
     ordering_fields = ['dispatch_date'] 
     permission_classes = [IsAuthenticated]
