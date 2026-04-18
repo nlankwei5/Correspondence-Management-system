@@ -16,6 +16,7 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from datetime import timedelta
 
 
 load_dotenv() 
@@ -50,7 +51,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'cloudinary', 
     'cloudinary_storage',
-    'django_filters'
+    'django_filters', 
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -148,7 +150,6 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.IsAdminUser',
     ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
@@ -160,7 +161,24 @@ DJOSER = {
     'SEND_ACTIVATION_EMAIL': False,
     'USER_CREATE_PASSWORD_RETYPE': True,
     'SEND_CONFIRMATION_EMAIL': False,
-    'SERIALIZERS': {},
+    'SERIALIZERS': {
+        'user': 'correspondence.serializer.UserSerializer',
+        'current_user': 'correspondence.serializer.UserSerializer',
+        'user_create': 'correspondence.serializer.UserCreateSerializer',
+    },
+    'PERMISSIONS': {
+        'user_list': ['rest_framework.permissions.IsAdminUser'],
+        'user': ['rest_framework.permissions.IsAdminUser'],
+    },
+}
+
+
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'AUTH_HEADER_TYPES': ('Bearer',),
 }
 
 
@@ -171,3 +189,5 @@ cloudinary.config(
     api_secret=os.getenv('CLOUDINARY_API_SECRET'),
     secure=True
 )
+
+
