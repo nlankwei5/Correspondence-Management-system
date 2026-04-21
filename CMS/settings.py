@@ -53,9 +53,11 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django_filters', 
     'drf_yasg',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -167,9 +169,11 @@ DJOSER = {
         'user_create': 'correspondence.serializer.UserCreateSerializer',
     },
     'PERMISSIONS': {
-        'user_list': ['rest_framework.permissions.IsAdminUser'],
-        'user': ['rest_framework.permissions.IsAdminUser'],
-    },
+    'user_create':  ['rest_framework.permissions.IsAdminUser'],
+    'user_list':    ['rest_framework.permissions.IsAdminUser'],
+    'user':         ['rest_framework.permissions.IsAdminUser'],
+    'current_user': ['rest_framework.permissions.IsAuthenticated'],
+    }
 }
 
 
@@ -191,3 +195,9 @@ cloudinary.config(
 )
 
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5500',     
+    'http://127.0.0.1:5500',
+]
+
+CORS_ALLOW_CREDENTIALS = True
