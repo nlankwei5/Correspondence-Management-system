@@ -13,6 +13,7 @@ urlpatterns = [
 
 
 router = DefaultRouter()
+router.register(r'departments', DepartmentViewSet, basename='departments')
 router.register(r'incoming', IncomingViewSet, basename='incoming')
 router.register(r'dispatch', DispatchViewSet, basename='dispatch')
 router.register(r'letters', LettersViewSet, basename='letters')
