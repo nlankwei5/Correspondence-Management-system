@@ -1,6 +1,6 @@
 from rest_framework import serializers 
 from .models import *
-from cloudinary.utils import cloudinary_url
+
 
 
 class DepartmentSerializer(serializers.ModelSerializer):
@@ -54,17 +54,10 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
 class IncomingSerializer(serializers.ModelSerializer):
     user_details = CreatedBySerializer(source='created_by', read_only=True)
-    file_url = serializers.SerializerMethodField()
-
-    def get_file_url(self, obj):
-        if obj.file:
-            url, _ = cloudinary_url(str(obj.file), resource_type='raw', secure=True)
-            return url
-        return None
     class Meta:
         model = IncomingCorrespondence
-        fields = ['id', 'subject', 'source', 'source_external', 'received_date', 'filed', 'file', 'created_by', 'user_details', 'file_url',]
-        read_only_fields = ['created_by', 'user_details', 'file_url',]
+        fields = ['id', 'subject', 'source', 'source_external', 'received_date', 'filed', 'file', 'created_by', 'user_details']
+        read_only_fields = ['created_by', 'user_details']
 
     def validate_file(self, value):
         if not value.name.endswith('.pdf'):
@@ -76,17 +69,10 @@ class IncomingSerializer(serializers.ModelSerializer):
 class DispatchSerializer(serializers.ModelSerializer):
 
     user_details = CreatedBySerializer(source='created_by', read_only=True)
-    file_url = serializers.SerializerMethodField()
-
-    def get_file_url(self, obj):
-        if obj.file:
-            url, _ = cloudinary_url(str(obj.file), resource_type='raw', secure=True)
-            return url
-        return None
     class Meta:
         model = Dispatch
-        fields = ['id', 'subject', 'destination', 'dispatch_date', 'filed', 'approval', 'created_by', 'user_details', 'file_url']
-        read_only_fields = ['created_by', 'user_details', 'file_url']
+        fields = ['id', 'subject', 'destination', 'dispatch_date', 'filed', 'approval', 'created_by', 'user_details']
+        read_only_fields = ['created_by', 'user_details']
 
 
 
@@ -95,17 +81,10 @@ class DispatchSerializer(serializers.ModelSerializer):
 class LettersSerializer(serializers.ModelSerializer):
 
     user_details = CreatedBySerializer(source='created_by', read_only=True)
-    file_url = serializers.SerializerMethodField()
-
-    def get_file_url(self, obj):
-        if obj.file:
-            url, _ = cloudinary_url(str(obj.file), resource_type='raw', secure=True)
-            return url
-        return None
     class Meta:
         model = Letters
-        fields = ['id', 'subject', 'reference_number', 'receipient', 'date_sent', 'file', 'created_by', 'user_details', 'file_url']
-        read_only_fields = ['created_by', 'user_details', 'file_url']
+        fields = ['id', 'subject', 'reference_number', 'receipient', 'date_sent', 'file', 'created_by', 'user_details']
+        read_only_fields = ['created_by', 'user_details']
 
     def validate_file(self, value):
         if not value.name.endswith('.pdf'):
