@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ── RESET & TOKENS ─────────────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --blue:#003882;--blue-dark:#002560;--blue-deep:#001A45;--blue-muted:#E8EDF6;
@@ -21,7 +20,7 @@
 }
 body{font-family:var(--ff);font-size:14px;color:var(--ink);background:var(--surface2);line-height:1.5;min-height:100vh;}
 
-/* ── LOGIN ──────────────────────────────────────────────────────────────── */
+/* ── LOGIN ── */
 #login-screen{min-height:100vh;display:flex;background:var(--blue-deep);}
 .login-left{width:440px;flex-shrink:0;background:var(--blue);display:flex;flex-direction:column;padding:3rem;position:relative;overflow:hidden;}
 .login-left::before{content:'';position:absolute;bottom:-80px;right:-80px;width:300px;height:300px;border-radius:50%;border:60px solid rgba(244,121,32,.1);pointer-events:none;}
@@ -40,16 +39,16 @@ body{font-family:var(--ff);font-size:14px;color:var(--ink);background:var(--surf
 .field label{display:block;font-size:11px;font-weight:600;color:var(--ink2);margin-bottom:5px;letter-spacing:.6px;text-transform:uppercase;}
 .field input{width:100%;padding:11px 14px;border:1.5px solid var(--border2);border-radius:var(--r8);font-family:var(--ff);font-size:14px;color:var(--ink);background:var(--surface);outline:none;transition:border .15s,box-shadow .15s;}
 .field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,56,130,.1);}
-.btn-primary{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:var(--r8);font-family:var(--ff);font-size:14px;font-weight:600;cursor:pointer;letter-spacing:.3px;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.btn-primary{width:100%;padding:12px;background:var(--blue);color:#fff;border:none;border-radius:var(--r8);font-family:var(--ff);font-size:14px;font-weight:600;cursor:pointer;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:8px;}
 .btn-primary:hover{background:var(--blue-dark);}
 .btn-primary:disabled{opacity:.6;cursor:not-allowed;}
 .login-note{font-size:11px;color:var(--ink3);text-align:center;margin-top:1.25rem;line-height:1.6;}
 .err-msg{background:#FEE8E8;border:1px solid #f5c6c6;border-radius:var(--r6);padding:8px 12px;font-size:12px;color:#8B0000;margin-bottom:1rem;}
 
-/* ── APP SHELL ──────────────────────────────────────────────────────────── */
+/* ── APP SHELL ── */
 #app-screen{display:none;height:100vh;flex-direction:row;}
 
-/* ── SIDEBAR ────────────────────────────────────────────────────────────── */
+/* ── SIDEBAR ── */
 .sidebar{width:240px;flex-shrink:0;background:var(--blue-deep);display:flex;flex-direction:column;height:100vh;position:sticky;top:0;overflow-y:auto;}
 .sb-head{padding:1.1rem 1rem 1rem;border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px;}
 .sb-logo{width:36px;height:36px;border-radius:9px;background:var(--orange);flex-shrink:0;display:flex;align-items:center;justify-content:center;}
@@ -80,19 +79,22 @@ body{font-family:var(--ff);font-size:14px;color:var(--ink);background:var(--surf
 .user-menu-item.danger:hover{background:rgba(200,16,46,.2);color:#ff8a8a;}
 .user-menu-divider{height:1px;background:rgba(255,255,255,.07);margin:2px 0;}
 
-/* ── MAIN ───────────────────────────────────────────────────────────────── */
+/* ── MAIN ── */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden;}
 .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:.875rem 1.75rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
 .topbar-left{display:flex;align-items:center;gap:1rem;}
 .page-title{font-family:var(--ffd);font-size:17px;font-weight:700;color:var(--ink);}
 .topbar-date{font-size:12px;color:var(--ink3);padding:4px 10px;background:var(--surface2);border-radius:20px;border:1px solid var(--border);}
+.topbar-right{display:flex;align-items:center;gap:8px;}
 .btn-add{background:var(--blue);color:#fff;border:none;border-radius:var(--r8);font-family:var(--ff);font-size:12px;font-weight:600;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;transition:background .15s;}
 .btn-add:hover{background:var(--blue-dark);}
+.btn-export{background:var(--surface);color:var(--ink2);border:1.5px solid var(--border2);border-radius:var(--r8);font-family:var(--ff);font-size:12px;font-weight:600;padding:7px 14px;cursor:pointer;display:none;align-items:center;gap:6px;transition:all .15s;}
+.btn-export:hover{background:var(--surface2);border-color:var(--blue);color:var(--blue);}
 .content{padding:1.5rem 1.75rem;flex:1;overflow-y:auto;}
 .page{display:none;}
 .page.active{display:block;}
 
-/* ── STATS ──────────────────────────────────────────────────────────────── */
+/* ── STATS ── */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:1.75rem;}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r12);padding:1.25rem;position:relative;overflow:hidden;}
 .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--stat-accent,var(--blue));}
@@ -101,7 +103,7 @@ body{font-family:var(--ff);font-size:14px;color:var(--ink);background:var(--surf
 .stat-sub{font-size:11px;color:var(--ink3);margin-top:10px;display:flex;align-items:center;gap:5px;}
 .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;display:inline-block;}
 
-/* ── SECTION / TABLE ────────────────────────────────────────────────────── */
+/* ── SECTION / TABLE ── */
 .section-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r12);overflow:hidden;margin-bottom:1.5rem;}
 .section-head{padding:.875rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--surface2);}
 .section-title{font-size:13px;font-weight:600;color:var(--ink);}
@@ -118,14 +120,14 @@ tbody td{padding:11px 14px;font-size:13px;color:var(--ink);vertical-align:middle
 .td-audit{font-size:11px;color:var(--ink3);}
 .td-ref{font-family:monospace;font-size:12px;color:var(--blue);font-weight:600;}
 .td-dash{color:var(--ink3);font-size:12px;}
-.file-actions{display:flex;align-items:center;gap:6px;}
+.file-actions{display:flex;align-items:center;gap:6px;white-space:nowrap;}
 .view-pdf{font-size:11px;font-weight:600;color:var(--blue);background:none;border:none;cursor:pointer;font-family:var(--ff);text-decoration:none;}
 .view-pdf:hover{text-decoration:underline;}
 .dl-btn{font-size:11px;font-weight:600;color:var(--orange-dark);background:none;border:none;cursor:pointer;font-family:var(--ff);text-decoration:none;}
 .dl-btn:hover{text-decoration:underline;}
 .pipe{color:var(--border2);font-size:11px;}
 
-/* ── BADGES ─────────────────────────────────────────────────────────────── */
+/* ── BADGES ── */
 .badge{display:inline-flex;align-items:center;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;}
 .b-blue{background:var(--blue-muted);color:var(--blue);}
 .b-orange{background:var(--orange-muted);color:var(--orange-dark);}
@@ -135,17 +137,17 @@ tbody td{padding:11px 14px;font-size:13px;color:var(--ink);vertical-align:middle
 .b-teal{background:#E0F4F1;color:#00695C;}
 .src-tag{display:inline-block;font-size:11px;color:var(--ink2);background:var(--surface2);padding:2px 8px;border-radius:5px;border:1px solid var(--border);font-weight:500;margin:1px;}
 
-/* ── FILTERS ────────────────────────────────────────────────────────────── */
+/* ── FILTERS ── */
 .filter-row{display:flex;gap:8px;margin-bottom:1.25rem;align-items:center;flex-wrap:wrap;}
 .filter-row input,.filter-row select{padding:8px 12px;border:1.5px solid var(--border2);border-radius:var(--r8);font-family:var(--ff);font-size:13px;color:var(--ink);background:var(--surface);outline:none;transition:border .15s;}
 .filter-row input{flex:1;min-width:180px;}
 .filter-row input:focus,.filter-row select:focus{border-color:var(--blue);}
 
-/* ── OUTLOOK ────────────────────────────────────────────────────────────── */
+/* ── OUTLOOK ── */
 .outlook-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#0066CC;background:#EEF4FB;border:none;border-radius:5px;padding:4px 9px;cursor:pointer;font-family:var(--ff);text-decoration:none;white-space:nowrap;transition:background .12s;}
 .outlook-btn:hover{background:#D8E8F5;}
 
-/* ── MODAL ──────────────────────────────────────────────────────────────── */
+/* ── MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,26,69,.55);z-index:300;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(2px);}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--surface);border-radius:16px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 30px 100px rgba(0,0,0,.25);}
@@ -189,7 +191,7 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
 .btn-save.orange{background:var(--orange);}
 .btn-save.orange:hover{background:var(--orange-dark);}
 
-/* ── PROFILE CARD ───────────────────────────────────────────────────────── */
+/* ── PROFILE ── */
 .profile-av-wrap{text-align:center;padding:1.5rem 0 1rem;}
 .profile-av{width:72px;height:72px;border-radius:50%;background:var(--blue);border:3px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700;color:#fff;margin:0 auto .75rem;}
 .profile-name{font-family:var(--ffd);font-size:16px;font-weight:700;color:var(--ink);}
@@ -199,37 +201,52 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
 .pw-strength{height:4px;border-radius:2px;margin-top:6px;background:var(--border);overflow:hidden;}
 .pw-strength-bar{height:100%;border-radius:2px;transition:width .2s,background .2s;}
 
-/* ── INFO BANNER ────────────────────────────────────────────────────────── */
+/* ── INFO BANNER ── */
 .info-banner{background:var(--blue-muted);border:1px solid rgba(0,56,130,.2);border-radius:var(--r8);padding:10px 14px;font-size:12px;color:var(--blue);margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
 
-/* ── TOAST ──────────────────────────────────────────────────────────────── */
+/* ── TOAST ── */
 #toast-wrap{position:fixed;bottom:1.5rem;right:1.5rem;z-index:500;display:flex;flex-direction:column;gap:8px;}
 .toast{padding:10px 16px;border-radius:var(--r8);font-size:13px;font-weight:500;box-shadow:0 8px 30px rgba(0,0,0,.15);display:flex;align-items:center;gap:8px;animation:slideIn .2s ease;}
 .toast-success{background:var(--blue);color:#fff;}
 .toast-error{background:#B71C1C;color:#fff;}
 .toast-info{background:var(--orange);color:#fff;}
 @keyframes slideIn{from{transform:translateX(110%);opacity:0;}to{transform:translateX(0);opacity:1;}}
-
-/* ── LOADERS ────────────────────────────────────────────────────────────── */
 .loading-row td{text-align:center;padding:2.5rem;color:var(--ink3);font-size:13px;}
 .empty-td{text-align:center;padding:2.5rem;color:var(--ink3);font-size:13px;}
 .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--border2);border-top-color:var(--blue);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:6px;}
 @keyframes spin{to{transform:rotate(360deg);}}
+
+/* ── PRINT STYLES ── */
+@media print {
+  body * { visibility: hidden; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area {
+    position: absolute; inset: 0;
+    padding: 2rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 12px;
+  }
+  .print-header { margin-bottom: 1.5rem; border-bottom: 2px solid #003882; padding-bottom: 1rem; }
+  .print-header h1 { font-size: 18px; color: #003882; font-family: 'Playfair Display', serif; }
+  .print-header p { font-size: 11px; color: #7B82A0; margin-top: 4px; }
+  .print-table { width: 100%; border-collapse: collapse; }
+  .print-table th { font-size: 10px; font-weight: 600; text-align: left; padding: 6px 8px; border-bottom: 1.5px solid #003882; color: #003882; text-transform: uppercase; letter-spacing: .3px; }
+  .print-table td { font-size: 11px; padding: 7px 8px; border-bottom: 1px solid #D8DCE8; }
+  .print-table tr:last-child td { border-bottom: none; }
+  .print-footer { margin-top: 1.5rem; font-size: 10px; color: #7B82A0; }
+}
 </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════════════════════════ LOGIN ═══════ -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="login-left">
     <div class="brand-top">
-      <div class="brand-pill">★ Correspondence Portal</div>
-      <div class="brand-emblem">
-        <svg viewBox="0 0 32 32" fill="none" width="32" height="32">
-          <path d="M4 10h18l8-6v22l-8-6H4V10z" fill="white" opacity=".9"/>
-          <path d="M4 13H2a3 3 0 000 6h2" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-          <path d="M10 20l2 6" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".6"/>
-        </svg>
+      <div class="brand-pill">★ MD's Secretariat Portal</div>
+      <div class="brand-emblem" style="background:none;padding:0;">
+          <img src="/frontend/assets/Ghana_Post_logo.png" alt="Ghana Post" 
+              style="width: 250px;height:60px;object-fit:contain;border-radius:14px; padding-left:80px;">
       </div>
       <h1>Correspondence<br>Management<br>System</h1>
       <p>Ghana Post Company Limited<br>Managing Director's Secretariat<br>Accra, Ghana</p>
@@ -255,7 +272,7 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════════════════════ APP ════════ -->
+<!-- APP -->
 <div id="app-screen">
   <aside class="sidebar">
     <div class="sb-head">
@@ -268,7 +285,6 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
       <div class="sb-name">MD's Secretariat<small>Ghana Post</small></div>
     </div>
     <div class="orange-bar"></div>
-
     <div class="nav-grp">
       <div class="nav-lbl">Main</div>
       <button class="nav-item active" onclick="goto('dashboard',this)">
@@ -285,36 +301,28 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
         <svg class="nav-ico" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h12a1 1 0 011 1v10a1 1 0 01-1 1H2a1 1 0 01-1-1V3a1 1 0 011-1zm1 2v8h10V4H3zm1 2h8v1H4V6zm0 2h6v1H4V8zm0 2h4v1H4v-1z"/></svg>Letters &amp; Memos
       </button>
     </div>
-
     <div class="nav-grp">
       <div class="nav-lbl">Administration</div>
       <button class="nav-item" onclick="goto('departments',this)">
         <svg class="nav-ico" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a3 3 0 110 6A3 3 0 018 1zM3 10a1 1 0 011-1h8a1 1 0 011 1v4H3v-4z"/></svg>Departments
       </button>
     </div>
-
     <div class="sb-footer">
       <div class="user-row" onclick="toggleUserMenu()" id="user-row-btn">
         <div class="user-av" id="sb-av">--</div>
-        <div class="user-info">
-          <strong id="sb-name">Loading...</strong>
-          <span id="sb-role">Secretary</span>
-        </div>
+        <div class="user-info"><strong id="sb-name">Loading...</strong><span id="sb-role">Secretary</span></div>
         <span class="user-caret" id="user-caret">▲</span>
       </div>
       <div class="user-menu" id="user-menu">
         <button class="user-menu-item" onclick="openProfile()">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a3 3 0 110 6A3 3 0 018 1zM3 10a1 1 0 011-1h8a1 1 0 011 1v4H3v-4z"/></svg>
-          My Profile
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a3 3 0 110 6A3 3 0 018 1zM3 10a1 1 0 011-1h8a1 1 0 011 1v4H3v-4z"/></svg>My Profile
         </button>
         <button class="user-menu-item" onclick="openPasswordChange()">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11 1a4 4 0 014 4v1h-2V5a2 2 0 00-4 0v1H4a1 1 0 00-1 1v7a1 1 0 001 1h8a1 1 0 001-1V7a1 1 0 00-1-1H9V5a2 2 0 012-2zM8 10a1 1 0 110 2 1 1 0 010-2z"/></svg>
-          Change Password
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11 1a4 4 0 014 4v1h-2V5a2 2 0 00-4 0v1H4a1 1 0 00-1 1v7a1 1 0 001 1h8a1 1 0 001-1V7a1 1 0 00-1-1H9V5a2 2 0 012-2zM8 10a1 1 0 110 2 1 1 0 010-2z"/></svg>Change Password
         </button>
         <div class="user-menu-divider"></div>
         <button class="user-menu-item danger" onclick="doLogout()">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M6 2h4a2 2 0 012 2v1h-2V4H6v8h4v-1h2v1a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm4 9l4-3-4-3v2H7v2h3v2z"/></svg>
-          Sign Out
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M6 2h4a2 2 0 012 2v1h-2V4H6v8h4v-1h2v1a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2zm4 9l4-3-4-3v2H7v2h3v2z"/></svg>Sign Out
         </button>
       </div>
     </div>
@@ -326,10 +334,16 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
         <span class="page-title" id="page-title">Dashboard</span>
         <span class="topbar-date" id="topbar-date"></span>
       </div>
-      <button class="btn-add" id="add-btn" style="display:none;" onclick="openModal()">
-        <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor"><path d="M5 5V1h2v4h4v2H7v4H5V7H1V5h4z"/></svg>
-        <span id="add-label">Add</span>
-      </button>
+      <div class="topbar-right">
+        <button class="btn-export" id="export-btn" onclick="handleExport()">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1v9m0 0L5 7m3 3l3-3M2 12v2a1 1 0 001 1h10a1 1 0 001-1v-2"/></svg>
+          <span id="export-label">Export / Print</span>
+        </button>
+        <button class="btn-add" id="add-btn" style="display:none;" onclick="openModal()">
+          <svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor"><path d="M5 5V1h2v4h4v2H7v4H5V7H1V5h4z"/></svg>
+          <span id="add-label">Add</span>
+        </button>
+      </div>
     </div>
 
     <div class="content">
@@ -337,46 +351,20 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
       <!-- DASHBOARD -->
       <div class="page active" id="page-dashboard">
         <div class="stats-grid">
-          <div class="stat-card" style="--stat-accent:var(--blue)">
-            <div class="stat-val" id="stat-total-inc">—</div>
-            <div class="stat-lbl">Total Incoming</div>
-            <div class="stat-sub" id="stat-inc-sub"><span class="dot" style="background:var(--blue)"></span>loading...</div>
-          </div>
-          <div class="stat-card" style="--stat-accent:var(--orange)">
-            <div class="stat-val" id="stat-total-dis">—</div>
-            <div class="stat-lbl">Total Dispatch</div>
-            <div class="stat-sub" id="stat-dis-sub"><span class="dot" style="background:var(--orange)"></span>loading...</div>
-          </div>
-          <div class="stat-card" style="--stat-accent:#006B3C">
-            <div class="stat-val" id="stat-total-let">—</div>
-            <div class="stat-lbl">Letters &amp; Memos</div>
-            <div class="stat-sub"><span class="dot" style="background:#006B3C"></span>on record</div>
-          </div>
-          <div class="stat-card" style="--stat-accent:#B71C1C">
-            <div class="stat-val" id="stat-unfiled">—</div>
-            <div class="stat-lbl">Unfiled Incoming</div>
-            <div class="stat-sub" id="stat-unfiled-sub"><span class="dot" style="background:#B71C1C"></span>needs attention</div>
-          </div>
+          <div class="stat-card" style="--stat-accent:var(--blue)"><div class="stat-val" id="stat-total-inc">—</div><div class="stat-lbl">Total Incoming</div><div class="stat-sub" id="stat-inc-sub"><span class="dot" style="background:var(--blue)"></span>loading...</div></div>
+          <div class="stat-card" style="--stat-accent:var(--orange)"><div class="stat-val" id="stat-total-dis">—</div><div class="stat-lbl">Total Dispatch</div><div class="stat-sub" id="stat-dis-sub"><span class="dot" style="background:var(--orange)"></span>loading...</div></div>
+          <div class="stat-card" style="--stat-accent:#006B3C"><div class="stat-val" id="stat-total-let">—</div><div class="stat-lbl">Letters &amp; Memos</div><div class="stat-sub"><span class="dot" style="background:#006B3C"></span>on record</div></div>
+          <div class="stat-card" style="--stat-accent:#B71C1C"><div class="stat-val" id="stat-unfiled">—</div><div class="stat-lbl">Unfiled Incoming</div><div class="stat-sub" id="stat-unfiled-sub"><span class="dot" style="background:#B71C1C"></span>needs attention</div></div>
         </div>
         <div class="section-card">
-          <div class="section-head">
-            <span class="section-title">Recent Incoming</span>
-            <button class="link-btn" onclick="goto('incoming',document.querySelectorAll('.nav-item')[1])">View all →</button>
-          </div>
-          <table>
-            <thead><tr><th>Subject</th><th>Source</th><th>Date</th><th>Filed</th><th>By</th></tr></thead>
-            <tbody id="dash-incoming-body"><tr class="loading-row"><td colspan="5"><span class="spin"></span>Loading...</td></tr></tbody>
-          </table>
+          <div class="section-head"><span class="section-title">Recent Incoming</span><button class="link-btn" onclick="goto('incoming',document.querySelectorAll('.nav-item')[1])">View all →</button></div>
+          <table><thead><tr><th>Subject</th><th>Source</th><th>Date</th><th>Filed</th><th>By</th></tr></thead>
+          <tbody id="dash-incoming-body"><tr class="loading-row"><td colspan="5"><span class="spin"></span>Loading...</td></tr></tbody></table>
         </div>
         <div class="section-card">
-          <div class="section-head">
-            <span class="section-title">Recent Dispatch</span>
-            <button class="link-btn" onclick="goto('dispatch',document.querySelectorAll('.nav-item')[2])">View all →</button>
-          </div>
-          <table>
-            <thead><tr><th>Subject</th><th>Destination(s)</th><th>Date</th><th>Type</th><th>By</th></tr></thead>
-            <tbody id="dash-dispatch-body"><tr class="loading-row"><td colspan="5"><span class="spin"></span>Loading...</td></tr></tbody>
-          </table>
+          <div class="section-head"><span class="section-title">Recent Dispatch</span><button class="link-btn" onclick="goto('dispatch',document.querySelectorAll('.nav-item')[2])">View all →</button></div>
+          <table><thead><tr><th>Subject</th><th>Destination(s)</th><th>Date</th><th>Type</th><th>By</th></tr></thead>
+          <tbody id="dash-dispatch-body"><tr class="loading-row"><td colspan="5"><span class="spin"></span>Loading...</td></tr></tbody></table>
         </div>
       </div>
 
@@ -385,16 +373,12 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
         <div class="filter-row">
           <input type="text" id="inc-search" placeholder="Search by subject..." oninput="renderIncoming()">
           <select id="inc-filter-filed" onchange="renderIncoming()">
-            <option value="">All Status</option>
-            <option value="true">Filed</option>
-            <option value="false">Not Filed</option>
+            <option value="">All Status</option><option value="true">Filed</option><option value="false">Not Filed</option>
           </select>
         </div>
         <div class="section-card">
-          <table>
-            <thead><tr><th>#</th><th>Subject</th><th>Source</th><th>Date</th><th>Filed</th><th>File</th><th>Forward</th><th>By</th></tr></thead>
-            <tbody id="incoming-body"><tr class="loading-row"><td colspan="8"><span class="spin"></span>Loading...</td></tr></tbody>
-          </table>
+          <table><thead><tr><th>#</th><th>Subject</th><th>Source</th><th>Date</th><th>Filed</th><th>File</th><th>Forward</th><th>By</th></tr></thead>
+          <tbody id="incoming-body"><tr class="loading-row"><td colspan="8"><span class="spin"></span>Loading...</td></tr></tbody></table>
         </div>
       </div>
 
@@ -403,21 +387,15 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
         <div class="filter-row">
           <input type="text" id="dis-search" placeholder="Search dispatch..." oninput="renderDispatch()">
           <select id="dis-filter-approval" onchange="renderDispatch()">
-            <option value="">All Types</option>
-            <option value="true">Approvals Only</option>
-            <option value="false">Standard Only</option>
+            <option value="">All Types</option><option value="true">Approvals Only</option><option value="false">Standard Only</option>
           </select>
           <select id="dis-filter-filed" onchange="renderDispatch()">
-            <option value="">All Status</option>
-            <option value="true">Filed</option>
-            <option value="false">Not Filed</option>
+            <option value="">All Status</option><option value="true">Filed</option><option value="false">Not Filed</option>
           </select>
         </div>
         <div class="section-card">
-          <table>
-            <thead><tr><th>#</th><th>Subject</th><th>Destination(s)</th><th>Date</th><th>Approval</th><th>Filed</th><th>File</th><th>By</th></tr></thead>
-            <tbody id="dispatch-body"><tr class="loading-row"><td colspan="8"><span class="spin"></span>Loading...</td></tr></tbody>
-          </table>
+          <table><thead><tr><th>#</th><th>Subject</th><th>Destination(s)</th><th>Date</th><th>Approval</th><th>Filed</th><th>File</th><th>By</th></tr></thead>
+          <tbody id="dispatch-body"><tr class="loading-row"><td colspan="8"><span class="spin"></span>Loading...</td></tr></tbody></table>
         </div>
       </div>
 
@@ -427,24 +405,17 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
           <input type="text" id="let-search" placeholder="Search by subject or reference..." oninput="renderLetters()">
         </div>
         <div class="section-card">
-          <table>
-            <thead><tr><th>Subject</th><th>Recipient</th><th>Reference No.</th><th>Date</th><th>File</th><th>Forward</th></tr></thead>
-            <tbody id="letters-body"><tr class="loading-row"><td colspan="6"><span class="spin"></span>Loading...</td></tr></tbody>
-          </table>
+          <table><thead><tr><th>Subject</th><th>Recipient</th><th>Reference No.</th><th>Date</th><th>File</th><th>Forward</th></tr></thead>
+          <tbody id="letters-body"><tr class="loading-row"><td colspan="6"><span class="spin"></span>Loading...</td></tr></tbody></table>
         </div>
       </div>
 
       <!-- DEPARTMENTS -->
       <div class="page" id="page-departments">
-        <div class="info-banner">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a1 1 0 110 2 1 1 0 010-2zm0 3a1 1 0 011 1v3a1 1 0 01-2 0V8a1 1 0 011-1z"/></svg>
-          Departments are managed by the system administrator via the Django Admin panel.
-        </div>
+        <div class="info-banner"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 3a1 1 0 110 2 1 1 0 010-2zm0 3a1 1 0 011 1v3a1 1 0 01-2 0V8a1 1 0 011-1z"/></svg>Departments are managed by the system administrator via the Django Admin panel.</div>
         <div class="section-card">
-          <table>
-            <thead><tr><th>Name</th><th>Code</th><th>Type</th><th>Status</th></tr></thead>
-            <tbody id="dept-body"><tr class="loading-row"><td colspan="4"><span class="spin"></span>Loading...</td></tr></tbody>
-          </table>
+          <table><thead><tr><th>Name</th><th>Code</th><th>Type</th><th>Status</th></tr></thead>
+          <tbody id="dept-body"><tr class="loading-row"><td colspan="4"><span class="spin"></span>Loading...</td></tr></tbody></table>
         </div>
       </div>
 
@@ -452,167 +423,82 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════ MODAL: INCOMING ════════════ -->
+<!-- HIDDEN PRINT AREA -->
+<div id="print-area" style="display:none;"></div>
+
+<!-- MODAL: INCOMING -->
 <div class="modal-overlay" id="modal-incoming">
   <div class="modal">
-    <div class="modal-head">
-      <div class="modal-stripe"></div>
-      <h3>Record Incoming Correspondence</h3>
-      <button class="modal-close" onclick="closeModal('modal-incoming')">×</button>
-    </div>
+    <div class="modal-head"><div class="modal-stripe"></div><h3>Record Incoming Correspondence</h3><button class="modal-close" onclick="closeModal('modal-incoming')">×</button></div>
     <div class="modal-body">
-      <div class="form-group">
-        <label>Subject *</label>
-        <input type="text" id="inc-subject" class="form-control" placeholder="Brief description of the letter's subject">
-      </div>
+      <div class="form-group"><label>Subject *</label><input type="text" id="inc-subject" class="form-control" placeholder="Brief description of the letter's subject"></div>
       <div class="form-row">
-        <div class="form-group">
-          <label>Source Type *</label>
-          <select id="inc-src-type" class="form-control" onchange="handleSrcType()">
-            <option value="">— Select type —</option>
-            <option value="internal">Internal Department</option>
-            <option value="regional">Regional Office</option>
-            <option value="frequent">External Frequent</option>
-            <option value="other">External Other</option>
-          </select>
-        </div>
-        <div class="form-group" id="inc-src-dept-grp" style="display:none;">
-          <label>Source *</label>
-          <select id="inc-src-dept" class="form-control"></select>
-        </div>
+        <div class="form-group"><label>Source Type *</label><select id="inc-src-type" class="form-control" onchange="handleSrcType()"><option value="">— Select type —</option><option value="internal">Internal Department</option><option value="regional">Regional Office</option><option value="frequent">External Frequent</option><option value="other">External Other</option></select></div>
+        <div class="form-group" id="inc-src-dept-grp" style="display:none;"><label>Source *</label><select id="inc-src-dept" class="form-control"></select></div>
       </div>
-      <div class="form-group" id="inc-src-other-grp" style="display:none;">
-        <label>Organisation Name *</label>
-        <input type="text" id="inc-src-other" class="form-control" placeholder="Name of the external organisation">
-      </div>
+      <div class="form-group" id="inc-src-other-grp" style="display:none;"><label>Organisation Name *</label><input type="text" id="inc-src-other" class="form-control" placeholder="Name of the external organisation"></div>
       <div class="form-row">
-        <div class="form-group">
-          <label>Date Received *</label>
-          <input type="date" id="inc-date" class="form-control">
-        </div>
-        <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:4px;">
-          <label class="inline-check"><input type="checkbox" id="inc-filed"> Mark as Filed</label>
-        </div>
+        <div class="form-group"><label>Date Received *</label><input type="date" id="inc-date" class="form-control"></div>
+        <div class="form-group" style="display:flex;align-items:flex-end;padding-bottom:4px;"><label class="inline-check"><input type="checkbox" id="inc-filed"> Mark as Filed</label></div>
       </div>
-      <div class="form-group">
-        <label>Scanned Copy (PDF)</label>
+      <div class="form-group"><label>Scanned Copy (PDF)</label>
         <div class="upload-zone" id="inc-upload-zone" onclick="document.getElementById('inc-file').click()">
-          <span class="upload-ico">📎</span>
-          <strong id="inc-file-label">Click to upload or drag PDF here</strong>
-          <p id="inc-file-sub">Scanned PDF only</p>
+          <span class="upload-ico">📎</span><strong id="inc-file-label">Click to upload or drag PDF here</strong><p id="inc-file-sub">Scanned PDF only</p>
           <input type="file" id="inc-file" accept=".pdf" onchange="handleFileSelect('inc')">
         </div>
       </div>
-      <div class="form-group">
-        <label>Notes (optional)</label>
-        <textarea id="inc-notes" class="form-control" placeholder="Follow-up actions or additional context..."></textarea>
-      </div>
+      <div class="form-group"><label>Notes (optional)</label><textarea id="inc-notes" class="form-control" placeholder="Follow-up actions or additional context..."></textarea></div>
     </div>
-    <div class="modal-foot">
-      <button class="btn-cancel" onclick="closeModal('modal-incoming')">Cancel</button>
-      <button class="btn-save" id="inc-save-btn" onclick="saveIncoming()">Save Record</button>
-    </div>
+    <div class="modal-foot"><button class="btn-cancel" onclick="closeModal('modal-incoming')">Cancel</button><button class="btn-save" id="inc-save-btn" onclick="saveIncoming()">Save Record</button></div>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════ MODAL: DISPATCH ════════════ -->
+<!-- MODAL: DISPATCH -->
 <div class="modal-overlay" id="modal-dispatch">
   <div class="modal">
-    <div class="modal-head">
-      <div class="modal-stripe"></div>
-      <h3>Record Dispatch / Outgoing</h3>
-      <button class="modal-close" onclick="closeModal('modal-dispatch')">×</button>
-    </div>
+    <div class="modal-head"><div class="modal-stripe"></div><h3>Record Dispatch / Outgoing</h3><button class="modal-close" onclick="closeModal('modal-dispatch')">×</button></div>
     <div class="modal-body">
-      <div class="form-group">
-        <label>Subject *</label>
-        <input type="text" id="dis-subject" class="form-control" placeholder="Brief description of the outgoing letter">
-      </div>
-      <div class="form-group">
-        <label>Destination Department(s) *</label>
-        <div class="check-grid" id="dis-dept-checks"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Dispatch Date *</label>
-          <input type="date" id="dis-date" class="form-control">
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="inline-checks">
-          <label class="inline-check"><input type="checkbox" id="dis-approval"> This is an Approval letter</label>
-          <label class="inline-check"><input type="checkbox" id="dis-filed"> Filed (not going out)</label>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Scanned Copy (PDF)</label>
+      <div class="form-group"><label>Subject *</label><input type="text" id="dis-subject" class="form-control" placeholder="Brief description of the outgoing letter"></div>
+      <div class="form-group"><label>Destination Department(s) *</label><div class="check-grid" id="dis-dept-checks"></div></div>
+      <div class="form-row"><div class="form-group"><label>Dispatch Date *</label><input type="date" id="dis-date" class="form-control"></div></div>
+      <div class="form-group"><div class="inline-checks"><label class="inline-check"><input type="checkbox" id="dis-approval"> This is an Approval letter</label><label class="inline-check"><input type="checkbox" id="dis-filed"> Filed (not going out)</label></div></div>
+      <div class="form-group"><label>Scanned Copy (PDF)</label>
         <div class="upload-zone" id="dis-upload-zone" onclick="document.getElementById('dis-file').click()">
-          <span class="upload-ico">📎</span>
-          <strong id="dis-file-label">Click to upload or drag PDF here</strong>
-          <p id="dis-file-sub">Scanned PDF only</p>
+          <span class="upload-ico">📎</span><strong id="dis-file-label">Click to upload or drag PDF here</strong><p id="dis-file-sub">Scanned PDF only</p>
           <input type="file" id="dis-file" accept=".pdf" onchange="handleFileSelect('dis')">
         </div>
       </div>
     </div>
-    <div class="modal-foot">
-      <button class="btn-cancel" onclick="closeModal('modal-dispatch')">Cancel</button>
-      <button class="btn-save" id="dis-save-btn" onclick="saveDispatch()">Save Record</button>
-    </div>
+    <div class="modal-foot"><button class="btn-cancel" onclick="closeModal('modal-dispatch')">Cancel</button><button class="btn-save" id="dis-save-btn" onclick="saveDispatch()">Save Record</button></div>
   </div>
 </div>
 
-<!-- ═════════════════════════════════════════════ MODAL: LETTER ════════════ -->
+<!-- MODAL: LETTER -->
 <div class="modal-overlay" id="modal-letters">
   <div class="modal">
-    <div class="modal-head">
-      <div class="modal-stripe"></div>
-      <h3>Add Letter / Memo</h3>
-      <button class="modal-close" onclick="closeModal('modal-letters')">×</button>
-    </div>
+    <div class="modal-head"><div class="modal-stripe"></div><h3>Add Letter / Memo</h3><button class="modal-close" onclick="closeModal('modal-letters')">×</button></div>
     <div class="modal-body">
-      <div class="form-group">
-        <label>Subject *</label>
-        <input type="text" id="let-subject" class="form-control" placeholder="Letter or memo subject">
-      </div>
+      <div class="form-group"><label>Subject *</label><input type="text" id="let-subject" class="form-control" placeholder="Letter or memo subject"></div>
       <div class="form-row">
-        <div class="form-group">
-          <label>Recipient</label>
-          <input type="text" id="let-recipient" class="form-control" placeholder="Name, role, or 'All Staff'">
-        </div>
-        <div class="form-group">
-          <label>Reference No.</label>
-          <input type="text" id="let-ref" class="form-control" placeholder="e.g. MDS/001/2026">
-        </div>
+        <div class="form-group"><label>Recipient</label><input type="text" id="let-recipient" class="form-control" placeholder="Name, role, or 'All Staff'"></div>
+        <div class="form-group"><label>Reference No.</label><input type="text" id="let-ref" class="form-control" placeholder="e.g. MDS/001/2026"></div>
       </div>
-      <div class="form-group">
-        <label>Date</label>
-        <input type="date" id="let-date" class="form-control">
-      </div>
-      <div class="form-group">
-        <label>Letter File (PDF) *</label>
+      <div class="form-group"><label>Date</label><input type="date" id="let-date" class="form-control"></div>
+      <div class="form-group"><label>Letter File (PDF) *</label>
         <div class="upload-zone" id="let-upload-zone" onclick="document.getElementById('let-file').click()">
-          <span class="upload-ico">📎</span>
-          <strong id="let-file-label">Click to upload or drag PDF here</strong>
-          <p id="let-file-sub">Letter or memo PDF</p>
+          <span class="upload-ico">📎</span><strong id="let-file-label">Click to upload or drag PDF here</strong><p id="let-file-sub">Letter or memo PDF</p>
           <input type="file" id="let-file" accept=".pdf" onchange="handleFileSelect('let')">
         </div>
       </div>
     </div>
-    <div class="modal-foot">
-      <button class="btn-cancel" onclick="closeModal('modal-letters')">Cancel</button>
-      <button class="btn-save" id="let-save-btn" onclick="saveLetter()">Save Letter</button>
-    </div>
+    <div class="modal-foot"><button class="btn-cancel" onclick="closeModal('modal-letters')">Cancel</button><button class="btn-save" id="let-save-btn" onclick="saveLetter()">Save Letter</button></div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════════ MODAL: PROFILE ══════════ -->
+<!-- MODAL: PROFILE -->
 <div class="modal-overlay" id="modal-profile">
   <div class="modal modal-sm">
-    <div class="modal-head">
-      <div class="modal-stripe orange"></div>
-      <h3>My Profile</h3>
-      <button class="modal-close" onclick="closeModal('modal-profile')">×</button>
-    </div>
+    <div class="modal-head"><div class="modal-stripe orange"></div><h3>My Profile</h3><button class="modal-close" onclick="closeModal('modal-profile')">×</button></div>
     <div class="modal-body">
       <div class="profile-av-wrap">
         <div class="profile-av" id="profile-av">--</div>
@@ -621,68 +507,39 @@ textarea.form-control{resize:vertical;min-height:72px;line-height:1.5;}
         <div class="profile-dept" id="profile-dept">—</div>
       </div>
       <div class="profile-divider"></div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" id="profile-email" class="form-control" readonly>
-        <p class="form-hint">Email cannot be changed. Contact your administrator.</p>
-      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" id="profile-email" class="form-control" readonly><p class="form-hint">Email cannot be changed. Contact your administrator.</p></div>
       <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" id="profile-first" class="form-control" placeholder="First name">
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" id="profile-last" class="form-control" placeholder="Last name">
-        </div>
+        <div class="form-group"><label>First Name</label><input type="text" id="profile-first" class="form-control" placeholder="First name"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" id="profile-last" class="form-control" placeholder="Last name"></div>
       </div>
     </div>
-    <div class="modal-foot">
-      <button class="btn-cancel" onclick="closeModal('modal-profile')">Cancel</button>
-      <button class="btn-save orange" id="profile-save-btn" onclick="saveProfile()">Update Profile</button>
-    </div>
+    <div class="modal-foot"><button class="btn-cancel" onclick="closeModal('modal-profile')">Cancel</button><button class="btn-save orange" id="profile-save-btn" onclick="saveProfile()">Update Profile</button></div>
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════ MODAL: CHANGE PASSWORD ══════ -->
+<!-- MODAL: CHANGE PASSWORD -->
 <div class="modal-overlay" id="modal-password">
   <div class="modal modal-sm">
-    <div class="modal-head">
-      <div class="modal-stripe orange"></div>
-      <h3>Change Password</h3>
-      <button class="modal-close" onclick="closeModal('modal-password')">×</button>
-    </div>
+    <div class="modal-head"><div class="modal-stripe orange"></div><h3>Change Password</h3><button class="modal-close" onclick="closeModal('modal-password')">×</button></div>
     <div class="modal-body">
-      <div class="form-group">
-        <label>Current Password *</label>
-        <input type="password" id="pw-current" class="form-control" placeholder="Your current password">
-      </div>
-      <div class="form-group">
-        <label>New Password *</label>
+      <div class="form-group"><label>Current Password *</label><input type="password" id="pw-current" class="form-control" placeholder="Your current password"></div>
+      <div class="form-group"><label>New Password *</label>
         <input type="password" id="pw-new" class="form-control" placeholder="Choose a strong password" oninput="checkPwStrength()">
         <div class="pw-strength"><div class="pw-strength-bar" id="pw-strength-bar" style="width:0%"></div></div>
         <p class="form-hint" id="pw-strength-label">Enter a new password</p>
       </div>
-      <div class="form-group">
-        <label>Confirm New Password *</label>
-        <input type="password" id="pw-confirm" class="form-control" placeholder="Repeat new password">
-      </div>
+      <div class="form-group"><label>Confirm New Password *</label><input type="password" id="pw-confirm" class="form-control" placeholder="Repeat new password"></div>
       <div id="pw-err" class="err-msg" style="display:none;"></div>
     </div>
-    <div class="modal-foot">
-      <button class="btn-cancel" onclick="closeModal('modal-password')">Cancel</button>
-      <button class="btn-save orange" id="pw-save-btn" onclick="savePassword()">Change Password</button>
-    </div>
+    <div class="modal-foot"><button class="btn-cancel" onclick="closeModal('modal-password')">Cancel</button><button class="btn-save orange" id="pw-save-btn" onclick="savePassword()">Change Password</button></div>
   </div>
 </div>
 
 <div id="toast-wrap"></div>
 
 <script>
-// ── CONFIG ───────────────────────────────────────────────────────────────────
 const API = 'http://localhost:8000/correspondence';
 
-// ── STATE ────────────────────────────────────────────────────────────────────
 let currentPage  = 'dashboard';
 let currentUser  = null;
 let departments  = [];
@@ -690,478 +547,409 @@ let incomingData = [];
 let dispatchData = [];
 let lettersData  = [];
 
-// ── TOKEN HELPERS ────────────────────────────────────────────────────────────
+// current filtered data for export — updated by each render function
+let filteredForExport = [];
+
+// ── TOKEN HELPERS ─────────────────────────────────────────────────────────────
 const getAccess  = () => localStorage.getItem('access_token');
 const getRefresh = () => localStorage.getItem('refresh_token');
 const setTokens  = (a,r) => { localStorage.setItem('access_token',a); if(r) localStorage.setItem('refresh_token',r); };
-const clearAuth  = () => { ['access_token','refresh_token','cms_user'].forEach(k => localStorage.removeItem(k)); };
+const clearAuth  = () => ['access_token','refresh_token','cms_user'].forEach(k => localStorage.removeItem(k));
 
-// ── API ──────────────────────────────────────────────────────────────────────
+// ── API ───────────────────────────────────────────────────────────────────────
 async function apiRequest(path, opts={}) {
-  const headers = { ...opts.headers };
+  const headers = {...opts.headers};
   const token = getAccess();
   if (token) headers['Authorization'] = `Bearer ${token}`;
   if (!(opts.body instanceof FormData)) headers['Content-Type'] = 'application/json';
-
-  let res = await fetch(`${API}${path}`, { ...opts, headers });
-
+  let res = await fetch(`${API}${path}`, {...opts, headers});
   if (res.status === 401) {
     const refresh = getRefresh();
     if (refresh) {
-      const rRes = await fetch(`${API}/auth/jwt/refresh/`, {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ refresh })
-      });
+      const rRes = await fetch(`${API}/auth/jwt/refresh/`, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({refresh})});
       if (rRes.ok) {
-        const d = await rRes.json();
-        setTokens(d.access, null);
+        const d = await rRes.json(); setTokens(d.access, null);
         headers['Authorization'] = `Bearer ${d.access}`;
-        res = await fetch(`${API}${path}`, { ...opts, headers });
+        res = await fetch(`${API}${path}`, {...opts, headers});
       } else { clearAuth(); showLogin(); return null; }
     } else { clearAuth(); showLogin(); return null; }
   }
   return res;
 }
-
-async function apiGet(path) {
-  const res = await apiRequest(path);
-  if (!res || !res.ok) return [];
-  const data = await res.json();
-  return Array.isArray(data) ? data : (data.results || []);
-}
-
-async function apiPost(path, body) {
-  return apiRequest(path, { method:'POST', body: body instanceof FormData ? body : JSON.stringify(body) });
-}
-
-async function apiPatch(path, body) {
-  return apiRequest(path, { method:'PATCH', body: body instanceof FormData ? body : JSON.stringify(body) });
-}
+async function apiGet(path)       { const res = await apiRequest(path); if(!res||!res.ok) return []; const d = await res.json(); return Array.isArray(d)?d:(d.results||[]); }
+async function apiPost(path,body) { return apiRequest(path,{method:'POST',body:body instanceof FormData?body:JSON.stringify(body)}); }
+async function apiPatch(path,body){ return apiRequest(path,{method:'PATCH',body:body instanceof FormData?body:JSON.stringify(body)}); }
 
 // ── TOAST ─────────────────────────────────────────────────────────────────────
-function toast(msg, type='success') {
-  const wrap = document.getElementById('toast-wrap');
-  const el = document.createElement('div');
-  el.className = `toast toast-${type}`;
-  el.innerHTML = `${type==='success'?'✓':type==='error'?'✕':'ℹ'} ${msg}`;
-  wrap.appendChild(el);
-  setTimeout(() => el.remove(), 3500);
+function toast(msg,type='success'){
+  const el=document.createElement('div');
+  el.className=`toast toast-${type}`;
+  el.innerHTML=`${type==='success'?'✓':type==='error'?'✕':'ℹ'} ${msg}`;
+  document.getElementById('toast-wrap').appendChild(el);
+  setTimeout(()=>el.remove(),3500);
 }
 
 // ── AUTH ──────────────────────────────────────────────────────────────────────
 async function doLogin() {
-  const email    = document.getElementById('l-email').value.trim();
-  const password = document.getElementById('l-pass').value;
-  const errEl    = document.getElementById('login-err');
-  const btn      = document.getElementById('login-btn');
-  if (!email || !password) { showLoginErr('Please enter your email and password.'); return; }
-
-  btn.disabled = true; btn.textContent = 'Signing in...';
-  errEl.style.display = 'none';
+  const email=document.getElementById('l-email').value.trim();
+  const password=document.getElementById('l-pass').value;
+  const btn=document.getElementById('login-btn');
+  document.getElementById('login-err').style.display='none';
+  if(!email||!password){showLoginErr('Please enter your email and password.');return;}
+  btn.disabled=true; btn.textContent='Signing in...';
   try {
-    const res = await fetch(`${API}/auth/jwt/create/`, {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ email, password })
-    });
-    if (!res.ok) { showLoginErr('Invalid credentials. Please try again.'); return; }
-    const { access, refresh } = await res.json();
-    setTokens(access, refresh);
-
-    const meRes = await fetch(`${API}/auth/users/me/`, { headers:{'Authorization':`Bearer ${access}`} });
-    const me = await meRes.json();
-    localStorage.setItem('cms_user', JSON.stringify(me));
-    currentUser = me;
-    showApp();
-  } catch(e) {
-    showLoginErr('Unable to connect. Check that Django is running.');
-  } finally {
-    btn.disabled = false; btn.textContent = 'Sign In to Portal';
-  }
+    const res = await fetch(`${API}/auth/jwt/create/`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
+    if(!res.ok){showLoginErr('Invalid credentials. Please try again.');return;}
+    const {access,refresh}=await res.json();
+    setTokens(access,refresh);
+    const me=await (await fetch(`${API}/auth/users/me/`,{headers:{'Authorization':`Bearer ${access}`}})).json();
+    localStorage.setItem('cms_user',JSON.stringify(me));
+    currentUser=me; showApp();
+  } catch(e){ showLoginErr('Unable to connect. Check that Django is running.'); }
+  finally{ btn.disabled=false; btn.textContent='Sign In to Portal'; }
 }
-
-function showLoginErr(msg) {
-  const el = document.getElementById('login-err');
-  el.textContent = msg; el.style.display = 'block';
+function showLoginErr(msg){const el=document.getElementById('login-err');el.textContent=msg;el.style.display='block';}
+function doLogout(){clearAuth();currentUser=null;closeUserMenu();showLogin();}
+function showLogin(){document.getElementById('app-screen').style.display='none';document.getElementById('login-screen').style.display='flex';}
+function showApp(){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app-screen').style.display='flex';
+  document.getElementById('topbar-date').textContent=new Date().toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'long',year:'numeric'});
+  updateSidebarUser(); fetchAll();
 }
-
-function doLogout() {
-  clearAuth(); currentUser = null;
-  closeUserMenu();
-  showLogin();
-}
-
-function showLogin() {
-  document.getElementById('app-screen').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-}
-
-function showApp() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app-screen').style.display = 'flex';
-  document.getElementById('topbar-date').textContent =
-    new Date().toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'long',year:'numeric'});
-  updateSidebarUser();
-  fetchAll();
-}
-
-function updateSidebarUser() {
-  if (!currentUser) return;
-  const fn = currentUser.first_name || currentUser.username || 'User';
-  const ln = currentUser.last_name || '';
-  const initials = (fn[0]+(ln[0]||'')).toUpperCase();
-  document.getElementById('sb-av').textContent   = initials;
-  document.getElementById('sb-name').textContent = `${fn} ${ln}`.trim();
-  document.getElementById('sb-role').textContent = currentUser.is_staff ? 'Administrator' : 'Secretary, MDS';
+function updateSidebarUser(){
+  if(!currentUser)return;
+  const fn=currentUser.first_name||currentUser.username||'U';
+  const ln=currentUser.last_name||'';
+  document.getElementById('sb-av').textContent=(fn[0]+(ln[0]||'')).toUpperCase();
+  document.getElementById('sb-name').textContent=`${fn} ${ln}`.trim();
+  document.getElementById('sb-role').textContent=currentUser.is_staff?'Administrator':'Secretary, MDS';
 }
 
 // ── USER MENU ─────────────────────────────────────────────────────────────────
-function toggleUserMenu() {
-  const menu = document.getElementById('user-menu');
-  const caret = document.getElementById('user-caret');
-  const isOpen = menu.classList.toggle('open');
-  caret.style.transform = isOpen ? 'rotate(180deg)' : '';
-}
-
-function closeUserMenu() {
-  document.getElementById('user-menu').classList.remove('open');
-  document.getElementById('user-caret').style.transform = '';
-}
-
-document.addEventListener('click', e => {
-  const row = document.getElementById('user-row-btn');
-  const menu = document.getElementById('user-menu');
-  if (row && !row.contains(e.target) && menu && !menu.contains(e.target)) closeUserMenu();
+function toggleUserMenu(){const m=document.getElementById('user-menu');const c=document.getElementById('user-caret');const o=m.classList.toggle('open');c.style.transform=o?'rotate(180deg)':'';}
+function closeUserMenu(){document.getElementById('user-menu').classList.remove('open');document.getElementById('user-caret').style.transform='';}
+document.addEventListener('click',e=>{
+  const row=document.getElementById('user-row-btn');const menu=document.getElementById('user-menu');
+  if(row&&!row.contains(e.target)&&menu&&!menu.contains(e.target))closeUserMenu();
 });
 
-// ── PROFILE MODAL ─────────────────────────────────────────────────────────────
-function openProfile() {
-  closeUserMenu();
-  if (!currentUser) return;
-  const fn = currentUser.first_name || '';
-  const ln = currentUser.last_name  || '';
-  const initials = ((fn[0]||'')+(ln[0]||'')).toUpperCase() || currentUser.username[0].toUpperCase();
-
-  document.getElementById('profile-av').textContent    = initials;
-  document.getElementById('profile-name').textContent  = `${fn} ${ln}`.trim() || currentUser.username;
-  document.getElementById('profile-role').textContent  = currentUser.is_staff ? 'Administrator' : 'Secretary, MDS';
-  document.getElementById('profile-email').value       = currentUser.email || '';
-  document.getElementById('profile-first').value       = fn;
-  document.getElementById('profile-last').value        = ln;
-
-  const dept = departments.find(d => d.id === currentUser.department);
-  document.getElementById('profile-dept').textContent  = dept ? dept.name : 'No Department Assigned';
-
+// ── PROFILE ───────────────────────────────────────────────────────────────────
+function openProfile(){
+  closeUserMenu(); if(!currentUser)return;
+  const fn=currentUser.first_name||''; const ln=currentUser.last_name||'';
+  document.getElementById('profile-av').textContent=((fn[0]||'')+(ln[0]||'')).toUpperCase()||currentUser.username[0].toUpperCase();
+  document.getElementById('profile-name').textContent=`${fn} ${ln}`.trim()||currentUser.username;
+  document.getElementById('profile-role').textContent=currentUser.is_staff?'Administrator':'Secretary, MDS';
+  document.getElementById('profile-email').value=currentUser.email||'';
+  document.getElementById('profile-first').value=fn;
+  document.getElementById('profile-last').value=ln;
+  const dept=departments.find(d=>d.id===currentUser.department);
+  document.getElementById('profile-dept').textContent=dept?dept.name:'No Department Assigned';
   document.getElementById('modal-profile').classList.add('open');
 }
-
-async function saveProfile() {
-  const first = document.getElementById('profile-first').value.trim();
-  const last  = document.getElementById('profile-last').value.trim();
-  const btn   = document.getElementById('profile-save-btn');
-
-  btn.disabled = true; btn.textContent = 'Saving...';
-  try {
-    const res = await apiPatch('/auth/users/me/', { first_name: first, last_name: last });
-    if (res && res.ok) {
-      const updated = await res.json();
-      currentUser = { ...currentUser, first_name: first, last_name: last };
-      localStorage.setItem('cms_user', JSON.stringify(currentUser));
-      updateSidebarUser();
-      closeModal('modal-profile');
-      toast('Profile updated successfully.','success');
-    } else if (res) {
-      const err = await res.json();
-      toast(Object.values(err).flat().join(' '),'error');
-    }
-  } finally {
-    btn.disabled = false; btn.textContent = 'Update Profile';
-  }
+async function saveProfile(){
+  const first=document.getElementById('profile-first').value.trim();
+  const last=document.getElementById('profile-last').value.trim();
+  const btn=document.getElementById('profile-save-btn');
+  btn.disabled=true; btn.textContent='Saving...';
+  try{
+    const res=await apiPatch('/auth/users/me/',{first_name:first,last_name:last});
+    if(res&&res.ok){
+      currentUser={...currentUser,first_name:first,last_name:last};
+      localStorage.setItem('cms_user',JSON.stringify(currentUser));
+      updateSidebarUser(); closeModal('modal-profile'); toast('Profile updated.','success');
+    } else if(res){const e=await res.json();toast(Object.values(e).flat().join(' '),'error');}
+  } finally{btn.disabled=false;btn.textContent='Update Profile';}
 }
 
 // ── PASSWORD CHANGE ───────────────────────────────────────────────────────────
-function openPasswordChange() {
+function openPasswordChange(){
   closeUserMenu();
-  document.getElementById('pw-current').value = '';
-  document.getElementById('pw-new').value     = '';
-  document.getElementById('pw-confirm').value = '';
-  document.getElementById('pw-err').style.display = 'none';
-  document.getElementById('pw-strength-bar').style.width = '0%';
-  document.getElementById('pw-strength-label').textContent = 'Enter a new password';
+  ['pw-current','pw-new','pw-confirm'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('pw-err').style.display='none';
+  document.getElementById('pw-strength-bar').style.width='0%';
+  document.getElementById('pw-strength-label').textContent='Enter a new password';
   document.getElementById('modal-password').classList.add('open');
 }
-
-function checkPwStrength() {
-  const pw  = document.getElementById('pw-new').value;
-  const bar = document.getElementById('pw-strength-bar');
-  const lbl = document.getElementById('pw-strength-label');
-  let score = 0;
-  if (pw.length >= 8)              score++;
-  if (/[A-Z]/.test(pw))           score++;
-  if (/[0-9]/.test(pw))           score++;
-  if (/[^A-Za-z0-9]/.test(pw))   score++;
-
-  const levels = [
-    { w:'0%',   bg:'transparent', t:'Enter a new password' },
-    { w:'25%',  bg:'#B71C1C',     t:'Weak — too short or simple' },
-    { w:'50%',  bg:'var(--orange)', t:'Fair — could be stronger' },
-    { w:'75%',  bg:'#1565C0',     t:'Good — add a symbol to strengthen' },
-    { w:'100%', bg:'#006B3C',     t:'Strong password' },
-  ];
-  bar.style.width      = levels[score].w;
-  bar.style.background = levels[score].bg;
-  lbl.textContent      = levels[score].t;
+function checkPwStrength(){
+  const pw=document.getElementById('pw-new').value;
+  let s=0;
+  if(pw.length>=8)s++;if(/[A-Z]/.test(pw))s++;if(/[0-9]/.test(pw))s++;if(/[^A-Za-z0-9]/.test(pw))s++;
+  const levels=[{w:'0%',bg:'transparent',t:'Enter a new password'},{w:'25%',bg:'#B71C1C',t:'Weak — too short or simple'},{w:'50%',bg:'var(--orange)',t:'Fair — could be stronger'},{w:'75%',bg:'#1565C0',t:'Good — add a symbol to strengthen'},{w:'100%',bg:'#006B3C',t:'Strong password'}];
+  document.getElementById('pw-strength-bar').style.cssText=`width:${levels[s].w};background:${levels[s].bg}`;
+  document.getElementById('pw-strength-label').textContent=levels[s].t;
 }
-
-async function savePassword() {
-  const current = document.getElementById('pw-current').value;
-  const newPw   = document.getElementById('pw-new').value;
-  const confirm = document.getElementById('pw-confirm').value;
-  const errEl   = document.getElementById('pw-err');
-  const btn     = document.getElementById('pw-save-btn');
-
-  errEl.style.display = 'none';
-  if (!current)         { errEl.textContent='Please enter your current password.'; errEl.style.display='block'; return; }
-  if (newPw.length < 8) { errEl.textContent='New password must be at least 8 characters.'; errEl.style.display='block'; return; }
-  if (newPw !== confirm) { errEl.textContent='New passwords do not match.'; errEl.style.display='block'; return; }
-
-  btn.disabled = true; btn.textContent = 'Changing...';
-  try {
-    const res = await apiPost('/auth/users/set_password/', {
-      current_password: current,
-      new_password: newPw,
-      re_new_password: confirm
-    });
-    if (res && res.status === 204) {
-      closeModal('modal-password');
-      toast('Password changed. Please log in again.','info');
-      setTimeout(() => { clearAuth(); currentUser = null; showLogin(); }, 1800);
-    } else if (res) {
-      const err = await res.json();
-      const msg = Object.values(err).flat().join(' ');
-      errEl.textContent = msg; errEl.style.display = 'block';
-    }
-  } finally {
-    btn.disabled = false; btn.textContent = 'Change Password';
-  }
+async function savePassword(){
+  const current=document.getElementById('pw-current').value;
+  const newPw=document.getElementById('pw-new').value;
+  const confirm=document.getElementById('pw-confirm').value;
+  const errEl=document.getElementById('pw-err');
+  const btn=document.getElementById('pw-save-btn');
+  errEl.style.display='none';
+  if(!current){errEl.textContent='Please enter your current password.';errEl.style.display='block';return;}
+  if(newPw.length<8){errEl.textContent='New password must be at least 8 characters.';errEl.style.display='block';return;}
+  if(newPw!==confirm){errEl.textContent='New passwords do not match.';errEl.style.display='block';return;}
+  btn.disabled=true; btn.textContent='Changing...';
+  try{
+    const res=await apiPost('/auth/users/set_password/',{current_password:current,new_password:newPw,re_new_password:confirm});
+    if(res&&res.status===204){closeModal('modal-password');toast('Password changed. Please log in again.','info');setTimeout(()=>{clearAuth();currentUser=null;showLogin();},1800);}
+    else if(res){const e=await res.json();errEl.textContent=Object.values(e).flat().join(' ');errEl.style.display='block';}
+  } finally{btn.disabled=false;btn.textContent='Change Password';}
 }
 
 // ── FETCH ─────────────────────────────────────────────────────────────────────
-async function fetchAll() {
-  await fetchDepartments();
-  fetchIncoming();
-  fetchDispatch();
-  fetchLetters();
-}
-async function fetchDepartments() { departments  = await apiGet('/departments/'); }
-async function fetchIncoming()    { incomingData = await apiGet('/incoming/');    updateStats(); renderIncoming();  renderDashIncoming(); }
-async function fetchDispatch()    { dispatchData = await apiGet('/dispatch/');    updateStats(); renderDispatch();  renderDashDispatch(); }
-async function fetchLetters()     { lettersData  = await apiGet('/letters/');     updateStats(); renderLetters(); }
+async function fetchAll(){await fetchDepartments();fetchIncoming();fetchDispatch();fetchLetters();}
+async function fetchDepartments(){departments=await apiGet('/departments/');}
+async function fetchIncoming(){incomingData=await apiGet('/incoming/');updateStats();renderIncoming();renderDashIncoming();}
+async function fetchDispatch(){dispatchData=await apiGet('/dispatch/');updateStats();renderDispatch();renderDashDispatch();}
+async function fetchLetters(){lettersData=await apiGet('/letters/');updateStats();renderLetters();}
 
 // ── STATS ─────────────────────────────────────────────────────────────────────
-function updateStats() {
-  const unfiled   = incomingData.filter(r => !r.filed).length;
-  const approvals = dispatchData.filter(r => r.approval).length;
-  document.getElementById('stat-total-inc').textContent = incomingData.length || '—';
-  document.getElementById('stat-total-dis').textContent = dispatchData.length || '—';
-  document.getElementById('stat-total-let').textContent = lettersData.length  || '—';
-  document.getElementById('stat-unfiled').textContent   = unfiled;
-  document.getElementById('stat-inc-sub').innerHTML  = `<span class="dot" style="background:var(--blue)"></span>${incomingData.length-unfiled} filed &middot; ${unfiled} unfiled`;
-  document.getElementById('stat-dis-sub').innerHTML  = `<span class="dot" style="background:var(--orange)"></span>${approvals} approval${approvals!==1?'s':''} sent`;
-  document.getElementById('stat-unfiled-sub').innerHTML = `<span class="dot" style="background:#B71C1C"></span>${unfiled>0?'needs attention':'all clear'}`;
-  const badge = document.getElementById('unfiled-badge');
-  badge.textContent = unfiled;
-  badge.style.display = unfiled > 0 ? 'inline' : 'none';
+function updateStats(){
+  const uf=incomingData.filter(r=>!r.filed).length;
+  const ap=dispatchData.filter(r=>r.approval).length;
+  document.getElementById('stat-total-inc').textContent=incomingData.length||'—';
+  document.getElementById('stat-total-dis').textContent=dispatchData.length||'—';
+  document.getElementById('stat-total-let').textContent=lettersData.length||'—';
+  document.getElementById('stat-unfiled').textContent=uf;
+  document.getElementById('stat-inc-sub').innerHTML=`<span class="dot" style="background:var(--blue)"></span>${incomingData.length-uf} filed &middot; ${uf} unfiled`;
+  document.getElementById('stat-dis-sub').innerHTML=`<span class="dot" style="background:var(--orange)"></span>${ap} approval${ap!==1?'s':''} sent`;
+  document.getElementById('stat-unfiled-sub').innerHTML=`<span class="dot" style="background:#B71C1C"></span>${uf>0?'needs attention':'all clear'}`;
+  const badge=document.getElementById('unfiled-badge');badge.textContent=uf;badge.style.display=uf>0?'inline':'none';
 }
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
-const badge  = (type, text) => `<span class="badge b-${type}">${text}</span>`;
+const bdg    = (type,text) => `<span class="badge b-${type}">${text}</span>`;
 const srcTag = text => `<span class="src-tag">${text}</span>`;
 
-function sourceLabel(r) {
-  if (r.source) {
-    const dept = departments.find(d => d.id === r.source);
-    return srcTag(dept ? dept.name : `Dept #${r.source}`);
-  }
-  return srcTag(r.source_external || 'External');
+function sourceLabel(r){
+  if(r.source){const d=departments.find(x=>x.id===r.source);return srcTag(d?d.name:`Dept #${r.source}`);}
+  return srcTag(r.source_external||'External');
 }
-
-function destTags(r) {
-  const ids = r.destination || [];
-  if (!ids.length) return '<span class="td-dash">—</span>';
-  return ids.map(id => { const d = departments.find(x => x.id===id); return srcTag(d?d.name:`Dept #${id}`); }).join('');
+function sourcePlain(r){
+  if(r.source){const d=departments.find(x=>x.id===r.source);return d?d.name:`Dept #${r.source}`;}
+  return r.source_external||'External';
 }
-
-function auditName(r) {
-  if (!r.created_by_details) return '<span class="td-dash">—</span>';
-  const { first_name='', last_name='' } = r.created_by_details;
+function destTags(r){
+  const ids=r.destination||[];if(!ids.length)return '<span class="td-dash">—</span>';
+  return ids.map(id=>{const d=departments.find(x=>x.id===id);return srcTag(d?d.name:`#${id}`);}).join('');
+}
+function destPlain(r){
+  const ids=r.destination||[];if(!ids.length)return '—';
+  return ids.map(id=>{const d=departments.find(x=>x.id===id);return d?d.name:`#${id}`;}).join(', ');
+}
+function auditName(r){
+  if(!r.user_details)return '<span class="td-dash">—</span>';
+  const{first_name='',last_name=''}=r.user_details;
   return `<span class="td-audit">${(first_name+' '+last_name).trim()||'—'}</span>`;
 }
-
-/* Download: appends ?fl_attachment to Cloudinary URL to force download */
-function downloadUrl(url) {
-  if (!url) return null;
-  return url.includes('?') ? url+'&fl_attachment=true' : url+'?fl_attachment=true';
+function auditPlain(r){
+  if(!r.user_details)return '—';
+  const{first_name='',last_name=''}=r.user_details;
+  return (first_name+' '+last_name).trim()||'—';
 }
 
-function fileActions(url, filename) {
-  if (!url) return '<span class="td-dash">—</span>';
-  const dl = downloadUrl(url);
+// FILE ACTIONS — uses file_url (full Cloudinary URL from backend)
+function fileActions(r){
+  const url=r.file_url;
+  if(!url)return '<span class="td-dash">—</span>';
+  const dlUrl=url.includes('?')?url+'&fl_attachment=true':url+'?fl_attachment=true';
   return `<div class="file-actions">
     <a class="view-pdf" href="${url}" target="_blank" rel="noreferrer">View</a>
     <span class="pipe">|</span>
-    <a class="dl-btn" href="${dl}" target="_blank" rel="noreferrer">Download</a>
+    <a class="dl-btn" href="${dlUrl}" target="_blank" rel="noreferrer">Download</a>
   </div>`;
 }
-
-function outlookBtn(subject, fileUrl) {
-  if (!fileUrl) return '<span class="td-dash">—</span>';
-  const body = encodeURIComponent(`Please find the scanned document at:\n${fileUrl}`);
-  const sub  = encodeURIComponent(`FWD: ${subject}`);
+function outlookBtn(subject,r){
+  const url=r.file_url;if(!url)return '<span class="td-dash">—</span>';
+  const body=encodeURIComponent(`Please find the scanned document at:\n${url}`);
+  const sub=encodeURIComponent(`FWD: ${subject}`);
   return `<a class="outlook-btn" href="mailto:?subject=${sub}&body=${body}">✉ Outlook</a>`;
 }
-
-function typeBadge(type) {
-  const m = { INTERNAL:{b:'gray',l:'Internal'}, REGIONAL:{b:'teal',l:'Regional'}, EXT_FREQUENT:{b:'orange',l:'Ext. Frequent'}, EXTERNAL:{b:'gray',l:'External'} };
-  const t = m[type]||{b:'gray',l:type};
-  return badge(t.b, t.l);
+function typeBadge(type){
+  const m={INTERNAL:{b:'gray',l:'Internal'},REGIONAL:{b:'teal',l:'Regional'},EXT_FREQUENT:{b:'orange',l:'Ext. Frequent'},EXTERNAL:{b:'gray',l:'External'}};
+  const t=m[type]||{b:'gray',l:type};return bdg(t.b,t.l);
 }
 
 // ── RENDER ────────────────────────────────────────────────────────────────────
-function renderDashIncoming() {
-  const rows = incomingData.slice(0,5).map(r => `<tr>
-    <td class="td-subject">${r.subject}</td>
-    <td>${sourceLabel(r)}</td><td>${r.received_date}</td>
-    <td>${badge(r.filed?'green':'red',r.filed?'Yes':'No')}</td>
-    <td>${auditName(r)}</td></tr>`).join('');
-  document.getElementById('dash-incoming-body').innerHTML = rows || `<tr><td colspan="5" class="empty-td">No incoming records yet.</td></tr>`;
+function renderDashIncoming(){
+  const rows=incomingData.slice(0,5).map(r=>`<tr><td class="td-subject">${r.subject}</td><td>${sourceLabel(r)}</td><td>${r.received_date}</td><td>${bdg(r.filed?'green':'red',r.filed?'Yes':'No')}</td><td>${auditName(r)}</td></tr>`).join('');
+  document.getElementById('dash-incoming-body').innerHTML=rows||`<tr><td colspan="5" class="empty-td">No incoming records yet.</td></tr>`;
+}
+function renderDashDispatch(){
+  const rows=dispatchData.slice(0,5).map(r=>`<tr><td class="td-subject">${r.subject}</td><td>${destTags(r)}</td><td>${r.dispatch_date}</td><td>${bdg(r.approval?'blue':'gray',r.approval?'Approval':'Standard')}</td><td>${auditName(r)}</td></tr>`).join('');
+  document.getElementById('dash-dispatch-body').innerHTML=rows||`<tr><td colspan="5" class="empty-td">No dispatch records yet.</td></tr>`;
 }
 
-function renderDashDispatch() {
-  const rows = dispatchData.slice(0,5).map(r => `<tr>
-    <td class="td-subject">${r.subject}</td>
-    <td>${destTags(r)}</td><td>${r.dispatch_date}</td>
-    <td>${badge(r.approval?'blue':'gray',r.approval?'Approval':'Standard')}</td>
-    <td>${auditName(r)}</td></tr>`).join('');
-  document.getElementById('dash-dispatch-body').innerHTML = rows || `<tr><td colspan="5" class="empty-td">No dispatch records yet.</td></tr>`;
-}
-
-function renderIncoming() {
-  const q     = (document.getElementById('inc-search')?.value||'').toLowerCase();
-  const filed = document.getElementById('inc-filter-filed')?.value||'';
-  const data  = incomingData.filter(r => (!q||r.subject.toLowerCase().includes(q)) && (filed===''||String(r.filed)===filed));
-  const rows  = data.map((r,i) => `<tr>
+function renderIncoming(){
+  const q=( document.getElementById('inc-search')?.value||'').toLowerCase();
+  const filed=document.getElementById('inc-filter-filed')?.value||'';
+  const data=incomingData.filter(r=>(!q||r.subject.toLowerCase().includes(q))&&(filed===''||String(r.filed)===filed));
+  filteredForExport=data;
+  const rows=data.map((r,i)=>`<tr>
     <td class="td-id">INC-${String(i+1).padStart(3,'0')}</td>
     <td class="td-subject">${r.subject}</td>
     <td>${sourceLabel(r)}</td><td>${r.received_date}</td>
-    <td>${badge(r.filed?'green':'red',r.filed?'Yes':'No')}</td>
-    <td>${fileActions(r.file, r.subject)}</td>
-    <td>${outlookBtn(r.subject, r.file)}</td>
+    <td>${bdg(r.filed?'green':'red',r.filed?'Yes':'No')}</td>
+    <td>${fileActions(r)}</td>
+    <td>${outlookBtn(r.subject,r)}</td>
     <td>${auditName(r)}</td></tr>`).join('');
-  document.getElementById('incoming-body').innerHTML = rows || `<tr><td colspan="8" class="empty-td">No records found.</td></tr>`;
+  document.getElementById('incoming-body').innerHTML=rows||`<tr><td colspan="8" class="empty-td">No records found.</td></tr>`;
 }
 
-function renderDispatch() {
-  const q     = (document.getElementById('dis-search')?.value||'').toLowerCase();
-  const appr  = document.getElementById('dis-filter-approval')?.value||'';
-  const filed = document.getElementById('dis-filter-filed')?.value||'';
-  const data  = dispatchData.filter(r =>
-    (!q||r.subject.toLowerCase().includes(q)) &&
-    (appr===''||String(r.approval)===appr) &&
-    (filed===''||String(r.filed)===filed));
-  const rows = data.map((r,i) => `<tr>
+function renderDispatch(){
+  const q=(document.getElementById('dis-search')?.value||'').toLowerCase();
+  const appr=document.getElementById('dis-filter-approval')?.value||'';
+  const filed=document.getElementById('dis-filter-filed')?.value||'';
+  const data=dispatchData.filter(r=>(!q||r.subject.toLowerCase().includes(q))&&(appr===''||String(r.approval)===appr)&&(filed===''||String(r.filed)===filed));
+  filteredForExport=data;
+  const rows=data.map((r,i)=>`<tr>
     <td class="td-id">DIS-${String(i+1).padStart(3,'0')}</td>
     <td class="td-subject">${r.subject}</td>
     <td>${destTags(r)}</td><td>${r.dispatch_date}</td>
-    <td>${badge(r.approval?'blue':'gray',r.approval?'Yes':'No')}</td>
-    <td>${badge(r.filed?'green':'red',r.filed?'Yes':'No')}</td>
-    <td>${fileActions(r.file, r.subject)}</td>
+    <td>${bdg(r.approval?'blue':'gray',r.approval?'Yes':'No')}</td>
+    <td>${bdg(r.filed?'green':'red',r.filed?'Yes':'No')}</td>
+    <td>${fileActions(r)}</td>
     <td>${auditName(r)}</td></tr>`).join('');
-  document.getElementById('dispatch-body').innerHTML = rows || `<tr><td colspan="8" class="empty-td">No records found.</td></tr>`;
+  document.getElementById('dispatch-body').innerHTML=rows||`<tr><td colspan="8" class="empty-td">No records found.</td></tr>`;
 }
 
-function renderLetters() {
-  const q    = (document.getElementById('let-search')?.value||'').toLowerCase();
-  const data = lettersData.filter(r => !q||r.subject.toLowerCase().includes(q)||(r.reference_number||'').toLowerCase().includes(q));
-  const rows = data.map(r => {
-    const fwd = r.file ? `<a class="outlook-btn" href="mailto:?subject=${encodeURIComponent((r.reference_number?r.reference_number+' — ':'')+r.subject)}&body=${encodeURIComponent('Please find the letter at:\n'+r.file)}">✉ Outlook</a>` : '<span class="td-dash">—</span>';
-    return `<tr>
-      <td class="td-subject">${r.subject}</td>
-      <td>${r.receipient||'<span class="td-dash">—</span>'}</td>
-      <td class="td-ref">${r.reference_number||'<span class="td-dash" style="font-family:var(--ff)">—</span>'}</td>
-      <td>${r.date_sent}</td>
-      <td>${fileActions(r.file, r.reference_number||r.subject)}</td>
-      <td>${fwd}</td></tr>`;
+function renderLetters(){
+  const q=(document.getElementById('let-search')?.value||'').toLowerCase();
+  const data=lettersData.filter(r=>!q||r.subject.toLowerCase().includes(q)||(r.reference_number||'').toLowerCase().includes(q));
+  filteredForExport=data;
+  const rows=data.map(r=>{
+    const fwd=r.file_url?`<a class="outlook-btn" href="mailto:?subject=${encodeURIComponent((r.reference_number?r.reference_number+' — ':'')+r.subject)}&body=${encodeURIComponent('Please find the letter at:\n'+r.file_url)}">✉ Outlook</a>`:'<span class="td-dash">—</span>';
+    return `<tr><td class="td-subject">${r.subject}</td><td>${r.receipient||'<span class="td-dash">—</span>'}</td><td class="td-ref">${r.reference_number||'<span class="td-dash" style="font-family:var(--ff)">—</span>'}</td><td>${r.date_sent}</td><td>${fileActions(r)}</td><td>${fwd}</td></tr>`;
   }).join('');
-  document.getElementById('letters-body').innerHTML = rows || `<tr><td colspan="6" class="empty-td">No letters on record yet.</td></tr>`;
+  document.getElementById('letters-body').innerHTML=rows||`<tr><td colspan="6" class="empty-td">No letters on record yet.</td></tr>`;
 }
 
-function renderDepartments() {
-  const rows = departments.map(d => `<tr>
-    <td class="td-subject">${d.name}</td>
-    <td class="td-id">${d.code}</td>
-    <td>${typeBadge(d.type)}</td>
-    <td>${badge(d.is_active?'green':'red',d.is_active?'Active':'Inactive')}</td></tr>`).join('');
-  document.getElementById('dept-body').innerHTML = rows || `<tr><td colspan="4" class="empty-td">No departments configured. Add them via the Django Admin panel.</td></tr>`;
+function renderDepartments(){
+  const rows=departments.map(d=>`<tr><td class="td-subject">${d.name}</td><td class="td-id">${d.code}</td><td>${typeBadge(d.type)}</td><td>${bdg(d.is_active?'green':'red',d.is_active?'Active':'Inactive')}</td></tr>`).join('');
+  document.getElementById('dept-body').innerHTML=rows||`<tr><td colspan="4" class="empty-td">No departments configured yet.</td></tr>`;
+}
+
+// ── EXPORT / PRINT ────────────────────────────────────────────────────────────
+function handleExport(){
+  const area = document.getElementById('print-area');
+  const now  = new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+  const user = currentUser ? `${currentUser.first_name||''} ${currentUser.last_name||''}`.trim() || currentUser.username : '—';
+
+  let title='', filterDesc='', tableHTML='';
+
+  if(currentPage==='incoming'){
+    const q=document.getElementById('inc-search').value;
+    const filed=document.getElementById('inc-filter-filed').value;
+    title='Incoming Correspondence';
+    filterDesc=[(q?`Search: "${q}"`:''), (filed==='true'?'Status: Filed':filed==='false'?'Status: Not Filed':'')].filter(Boolean).join(' · ')||'All records';
+    tableHTML=`<table class="print-table">
+      <thead><tr><th>#</th><th>Subject</th><th>Source</th><th>Date Received</th><th>Filed</th><th>Recorded By</th></tr></thead>
+      <tbody>${filteredForExport.map((r,i)=>`<tr>
+        <td>INC-${String(i+1).padStart(3,'0')}</td>
+        <td>${r.subject}</td>
+        <td>${sourcePlain(r)}</td>
+        <td>${r.received_date}</td>
+        <td>${r.filed?'Yes':'No'}</td>
+        <td>${auditPlain(r)}</td></tr>`).join('')}
+      </tbody></table>`;
+  } else if(currentPage==='dispatch'){
+    const q=document.getElementById('dis-search').value;
+    const appr=document.getElementById('dis-filter-approval').value;
+    const filed=document.getElementById('dis-filter-filed').value;
+    title='Dispatch / Outgoing Correspondence';
+    filterDesc=[(q?`Search: "${q}"`:''), (appr==='true'?'Type: Approvals':appr==='false'?'Type: Standard':''), (filed==='true'?'Status: Filed':filed==='false'?'Status: Not Filed':'')].filter(Boolean).join(' · ')||'All records';
+    tableHTML=`<table class="print-table">
+      <thead><tr><th>#</th><th>Subject</th><th>Destination(s)</th><th>Date</th><th>Approval</th><th>Filed</th><th>Recorded By</th></tr></thead>
+      <tbody>${filteredForExport.map((r,i)=>`<tr>
+        <td>DIS-${String(i+1).padStart(3,'0')}</td>
+        <td>${r.subject}</td>
+        <td>${destPlain(r)}</td>
+        <td>${r.dispatch_date}</td>
+        <td>${r.approval?'Yes':'No'}</td>
+        <td>${r.filed?'Yes':'No'}</td>
+        <td>${auditPlain(r)}</td></tr>`).join('')}
+      </tbody></table>`;
+  } else if(currentPage==='letters'){
+    const q=document.getElementById('let-search').value;
+    title='Letters & Memos';
+    filterDesc=q?`Search: "${q}"`:'All records';
+    tableHTML=`<table class="print-table">
+      <thead><tr><th>Subject</th><th>Recipient</th><th>Reference No.</th><th>Date</th></tr></thead>
+      <tbody>${filteredForExport.map(r=>`<tr>
+        <td>${r.subject}</td>
+        <td>${r.receipient||'—'}</td>
+        <td>${r.reference_number||'—'}</td>
+        <td>${r.date_sent}</td></tr>`).join('')}
+      </tbody></table>`;
+  }
+
+  area.style.display='block';
+  area.innerHTML=`
+    <div class="print-header">
+      <h1>Ghana Post — MD's Secretariat</h1>
+      <p>${title} &nbsp;·&nbsp; ${filterDesc} &nbsp;·&nbsp; ${filteredForExport.length} record${filteredForExport.length!==1?'s':''}</p>
+    </div>
+    ${tableHTML}
+    <div class="print-footer">Printed on ${now} &nbsp;·&nbsp; By: ${user} &nbsp;·&nbsp; Ghana Post Company Limited — Correspondence Management System</div>`;
+
+  window.print();
+  area.style.display='none';
 }
 
 // ── NAV ───────────────────────────────────────────────────────────────────────
-const PAGE_CONFIG = {
-  dashboard:   { title:'Dashboard',                   add:false },
-  incoming:    { title:'Incoming Correspondence',     add:true,  label:'Record Incoming', modal:'modal-incoming' },
-  dispatch:    { title:'Dispatch / Outgoing',         add:true,  label:'Record Dispatch', modal:'modal-dispatch' },
-  letters:     { title:'Letters & Memos',             add:true,  label:'Add Letter',      modal:'modal-letters' },
-  departments: { title:'Departments & Organisations', add:false }
+const PAGES_WITH_EXPORT = ['incoming','dispatch','letters'];
+const PAGE_CONFIG={
+  dashboard:{title:'Dashboard',add:false},
+  incoming:{title:'Incoming Correspondence',add:true,label:'Record Incoming',modal:'modal-incoming'},
+  dispatch:{title:'Dispatch / Outgoing',add:true,label:'Record Dispatch',modal:'modal-dispatch'},
+  letters:{title:'Letters & Memos',add:true,label:'Add Letter',modal:'modal-letters'},
+  departments:{title:'Departments & Organisations',add:false}
 };
 
-function goto(page, el) {
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  if (el) el.classList.add('active');
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+function goto(page,el){
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+page).classList.add('active');
-  const cfg = PAGE_CONFIG[page];
-  document.getElementById('page-title').textContent = cfg.title;
-  const addBtn = document.getElementById('add-btn');
-  if (cfg.add) { addBtn.style.display='flex'; document.getElementById('add-label').textContent=cfg.label; }
-  else { addBtn.style.display='none'; }
-  currentPage = page;
-  if (page === 'departments') renderDepartments();
+  const cfg=PAGE_CONFIG[page];
+  document.getElementById('page-title').textContent=cfg.title;
+  const addBtn=document.getElementById('add-btn');
+  const expBtn=document.getElementById('export-btn');
+  if(cfg.add){addBtn.style.display='flex';document.getElementById('add-label').textContent=cfg.label;}else{addBtn.style.display='none';}
+  expBtn.style.display=PAGES_WITH_EXPORT.includes(page)?'flex':'none';
+  currentPage=page;
+  if(page==='departments')renderDepartments();
 }
 
-function openModal() {
-  const cfg = PAGE_CONFIG[currentPage];
-  if (cfg?.modal) { resetModal(currentPage); document.getElementById(cfg.modal).classList.add('open'); }
-}
-
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function openModal(){const cfg=PAGE_CONFIG[currentPage];if(cfg?.modal){resetModal(currentPage);document.getElementById(cfg.modal).classList.add('open');}}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
 
 // ── SOURCE TYPE LOGIC ─────────────────────────────────────────────────────────
-function handleSrcType() {
-  const type = document.getElementById('inc-src-type').value;
-  document.getElementById('inc-src-dept-grp').style.display  = ['internal','regional','frequent'].includes(type)?'block':'none';
-  document.getElementById('inc-src-other-grp').style.display = type==='other'?'block':'none';
-  if (['internal','regional','frequent'].includes(type)) {
-    const map = { internal:'INTERNAL', regional:'REGIONAL', frequent:'EXT_FREQUENT' };
-    const sel = document.getElementById('inc-src-dept');
-    sel.innerHTML = '<option value="">— Select —</option>' +
-      departments.filter(d => d.type===map[type]).map(d => `<option value="${d.id}">${d.name}</option>`).join('');
+function handleSrcType(){
+  const type=document.getElementById('inc-src-type').value;
+  document.getElementById('inc-src-dept-grp').style.display=['internal','regional','frequent'].includes(type)?'block':'none';
+  document.getElementById('inc-src-other-grp').style.display=type==='other'?'block':'none';
+  if(['internal','regional','frequent'].includes(type)){
+    const map={internal:'INTERNAL',regional:'REGIONAL',frequent:'EXT_FREQUENT'};
+    const sel=document.getElementById('inc-src-dept');
+    sel.innerHTML='<option value="">— Select —</option>'+departments.filter(d=>d.type===map[type]).map(d=>`<option value="${d.id}">${d.name}</option>`).join('');
   }
 }
 
-// ── FILE SELECT ───────────────────────────────────────────────────────────────
-function handleFileSelect(prefix) {
-  const file = document.getElementById(`${prefix}-file`).files[0];
-  if (!file) return;
-  document.getElementById(`${prefix}-file-label`).textContent = file.name;
-  document.getElementById(`${prefix}-file-sub`).textContent   = `${(file.size/1024).toFixed(0)} KB selected`;
+function handleFileSelect(prefix){
+  const file=document.getElementById(`${prefix}-file`).files[0];if(!file)return;
+  document.getElementById(`${prefix}-file-label`).textContent=file.name;
+  document.getElementById(`${prefix}-file-sub`).textContent=`${(file.size/1024).toFixed(0)} KB selected`;
   document.getElementById(`${prefix}-upload-zone`).classList.add('has-file');
 }
 
-// ── RESET MODALS ──────────────────────────────────────────────────────────────
-const today = () => new Date().toISOString().split('T')[0];
+const today=()=>new Date().toISOString().split('T')[0];
 
-function resetModal(page) {
-  if (page === 'incoming') {
-    ['inc-subject','inc-src-other','inc-notes'].forEach(id => document.getElementById(id).value='');
+function resetModal(page){
+  if(page==='incoming'){
+    ['inc-subject','inc-src-other','inc-notes'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('inc-src-type').value='';
     document.getElementById('inc-date').value=today();
     document.getElementById('inc-filed').checked=false;
@@ -1171,7 +959,7 @@ function resetModal(page) {
     document.getElementById('inc-upload-zone').classList.remove('has-file');
     document.getElementById('inc-src-dept-grp').style.display='none';
     document.getElementById('inc-src-other-grp').style.display='none';
-  } else if (page === 'dispatch') {
+  } else if(page==='dispatch'){
     document.getElementById('dis-subject').value='';
     document.getElementById('dis-date').value=today();
     document.getElementById('dis-approval').checked=false;
@@ -1180,11 +968,9 @@ function resetModal(page) {
     document.getElementById('dis-file-label').textContent='Click to upload or drag PDF here';
     document.getElementById('dis-file-sub').textContent='Scanned PDF only';
     document.getElementById('dis-upload-zone').classList.remove('has-file');
-    document.getElementById('dis-dept-checks').innerHTML = departments.map(d =>
-      `<label class="check-item"><input type="checkbox" value="${d.id}" name="dis-dest"> ${d.name}</label>`
-    ).join('');
-  } else if (page === 'letters') {
-    ['let-subject','let-recipient','let-ref'].forEach(id => document.getElementById(id).value='');
+    document.getElementById('dis-dept-checks').innerHTML=departments.map(d=>`<label class="check-item"><input type="checkbox" value="${d.id}" name="dis-dest"> ${d.name}</label>`).join('');
+  } else if(page==='letters'){
+    ['let-subject','let-recipient','let-ref'].forEach(id=>document.getElementById(id).value='');
     document.getElementById('let-date').value=today();
     document.getElementById('let-file').value='';
     document.getElementById('let-file-label').textContent='Click to upload or drag PDF here';
@@ -1193,100 +979,81 @@ function resetModal(page) {
   }
 }
 
-// ── SAVE: INCOMING ────────────────────────────────────────────────────────────
-async function saveIncoming() {
-  const subject  = document.getElementById('inc-subject').value.trim();
-  const srcType  = document.getElementById('inc-src-type').value;
-  const srcDept  = document.getElementById('inc-src-dept').value;
-  const srcOther = document.getElementById('inc-src-other').value.trim();
-  const date     = document.getElementById('inc-date').value;
-  const filed    = document.getElementById('inc-filed').checked;
-  const file     = document.getElementById('inc-file').files[0];
-
-  if (!subject)  { toast('Subject is required.','error'); return; }
-  if (!srcType)  { toast('Please select a source type.','error'); return; }
-  if (['internal','regional','frequent'].includes(srcType) && !srcDept) { toast('Please select the source.','error'); return; }
-  if (srcType === 'other' && !srcOther) { toast('Please enter the organisation name.','error'); return; }
-
-  const btn = document.getElementById('inc-save-btn');
-  btn.disabled=true; btn.textContent='Saving...';
-  try {
-    const fd = new FormData();
-    fd.append('subject', subject); fd.append('received_date', date); fd.append('filed', filed);
-    if (['internal','regional','frequent'].includes(srcType)) fd.append('source', srcDept);
-    if (srcType === 'other') fd.append('source_external', srcOther);
-    if (file) fd.append('file', file);
-    const res = await apiPost('/incoming/', fd);
-    if (res && res.ok) { toast('Incoming record saved.','success'); closeModal('modal-incoming'); fetchIncoming(); }
-    else if (res) { const e = await res.json(); toast(Object.values(e).flat().join(' '),'error'); }
-  } finally { btn.disabled=false; btn.textContent='Save Record'; }
+// ── SAVE FUNCTIONS ────────────────────────────────────────────────────────────
+async function saveIncoming(){
+  const subject=document.getElementById('inc-subject').value.trim();
+  const srcType=document.getElementById('inc-src-type').value;
+  const srcDept=document.getElementById('inc-src-dept').value;
+  const srcOther=document.getElementById('inc-src-other').value.trim();
+  const date=document.getElementById('inc-date').value;
+  const filed=document.getElementById('inc-filed').checked;
+  const file=document.getElementById('inc-file').files[0];
+  if(!subject){toast('Subject is required.','error');return;}
+  if(!srcType){toast('Please select a source type.','error');return;}
+  if(['internal','regional','frequent'].includes(srcType)&&!srcDept){toast('Please select the source.','error');return;}
+  if(srcType==='other'&&!srcOther){toast('Please enter the organisation name.','error');return;}
+  const btn=document.getElementById('inc-save-btn');btn.disabled=true;btn.textContent='Saving...';
+  try{
+    const fd=new FormData();
+    fd.append('subject',subject);fd.append('received_date',date);fd.append('filed',filed);
+    if(['internal','regional','frequent'].includes(srcType))fd.append('source',srcDept);
+    if(srcType==='other')fd.append('source_external',srcOther);
+    if(file)fd.append('file',file);
+    const res=await apiPost('/incoming/',fd);
+    if(res&&res.ok){toast('Incoming record saved.','success');closeModal('modal-incoming');fetchIncoming();}
+    else if(res){const e=await res.json();toast(Object.values(e).flat().join(' '),'error');}
+  }finally{btn.disabled=false;btn.textContent='Save Record';}
 }
 
-// ── SAVE: DISPATCH ────────────────────────────────────────────────────────────
-async function saveDispatch() {
-  const subject  = document.getElementById('dis-subject').value.trim();
-  const date     = document.getElementById('dis-date').value;
-  const approval = document.getElementById('dis-approval').checked;
-  const filed    = document.getElementById('dis-filed').checked;
-  const file     = document.getElementById('dis-file').files[0];
-  const selected = [...document.querySelectorAll('input[name="dis-dest"]:checked')].map(c => c.value);
-
-  if (!subject)         { toast('Subject is required.','error'); return; }
-  if (!selected.length) { toast('Select at least one destination department.','error'); return; }
-
-  const btn = document.getElementById('dis-save-btn');
-  btn.disabled=true; btn.textContent='Saving...';
-  try {
-    const fd = new FormData();
-    fd.append('subject', subject); fd.append('dispatch_date', date);
-    fd.append('approval', approval); fd.append('filed', filed);
-    selected.forEach(id => fd.append('destination', id));
-    if (file) fd.append('file', file);
-    const res = await apiPost('/dispatch/', fd);
-    if (res && res.ok) { toast('Dispatch record saved.','success'); closeModal('modal-dispatch'); fetchDispatch(); }
-    else if (res) { const e = await res.json(); toast(Object.values(e).flat().join(' '),'error'); }
-  } finally { btn.disabled=false; btn.textContent='Save Record'; }
+async function saveDispatch(){
+  const subject=document.getElementById('dis-subject').value.trim();
+  const date=document.getElementById('dis-date').value;
+  const approval=document.getElementById('dis-approval').checked;
+  const filed=document.getElementById('dis-filed').checked;
+  const file=document.getElementById('dis-file').files[0];
+  const selected=[...document.querySelectorAll('input[name="dis-dest"]:checked')].map(c=>c.value);
+  if(!subject){toast('Subject is required.','error');return;}
+  if(!selected.length){toast('Select at least one destination department.','error');return;}
+  const btn=document.getElementById('dis-save-btn');btn.disabled=true;btn.textContent='Saving...';
+  try{
+    const fd=new FormData();
+    fd.append('subject',subject);fd.append('dispatch_date',date);fd.append('approval',approval);fd.append('filed',filed);
+    selected.forEach(id=>fd.append('destination',id));
+    if(file)fd.append('file',file);
+    const res=await apiPost('/dispatch/',fd);
+    if(res&&res.ok){toast('Dispatch record saved.','success');closeModal('modal-dispatch');fetchDispatch();}
+    else if(res){const e=await res.json();toast(Object.values(e).flat().join(' '),'error');}
+  }finally{btn.disabled=false;btn.textContent='Save Record';}
 }
 
-// ── SAVE: LETTER ──────────────────────────────────────────────────────────────
-async function saveLetter() {
-  const subject   = document.getElementById('let-subject').value.trim();
-  const recipient = document.getElementById('let-recipient').value.trim();
-  const ref       = document.getElementById('let-ref').value.trim();
-  const date      = document.getElementById('let-date').value;
-  const file      = document.getElementById('let-file').files[0];
-
-  if (!subject) { toast('Subject is required.','error'); return; }
-  if (!file)    { toast('Please upload the letter PDF.','error'); return; }
-
-  const btn = document.getElementById('let-save-btn');
-  btn.disabled=true; btn.textContent='Saving...';
-  try {
-    const fd = new FormData();
-    fd.append('subject', subject); fd.append('receipient', recipient);
-    fd.append('reference_number', ref); fd.append('date_sent', date);
-    fd.append('file', file);
-    const res = await apiPost('/letters/', fd);
-    if (res && res.ok) { toast('Letter saved.','success'); closeModal('modal-letters'); fetchLetters(); }
-    else if (res) { const e = await res.json(); toast(Object.values(e).flat().join(' '),'error'); }
-  } finally { btn.disabled=false; btn.textContent='Save Letter'; }
+async function saveLetter(){
+  const subject=document.getElementById('let-subject').value.trim();
+  const recipient=document.getElementById('let-recipient').value.trim();
+  const ref=document.getElementById('let-ref').value.trim();
+  const date=document.getElementById('let-date').value;
+  const file=document.getElementById('let-file').files[0];
+  if(!subject){toast('Subject is required.','error');return;}
+  if(!file){toast('Please upload the letter PDF.','error');return;}
+  const btn=document.getElementById('let-save-btn');btn.disabled=true;btn.textContent='Saving...';
+  try{
+    const fd=new FormData();
+    fd.append('subject',subject);fd.append('receipient',recipient);fd.append('reference_number',ref);fd.append('date_sent',date);fd.append('file',file);
+    const res=await apiPost('/letters/',fd);
+    if(res&&res.ok){toast('Letter saved.','success');closeModal('modal-letters');fetchLetters();}
+    else if(res){const e=await res.json();toast(Object.values(e).flat().join(' '),'error');}
+  }finally{btn.disabled=false;btn.textContent='Save Letter';}
 }
 
-// ── KEYBOARD & CLICK OUTSIDE ──────────────────────────────────────────────────
-document.addEventListener('keydown', e => {
-  if (e.key==='Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
-  if (e.key==='Enter' && document.activeElement.id==='l-pass') doLogin();
+// ── KEYBOARD & OUTSIDE CLICK ──────────────────────────────────────────────────
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')document.querySelectorAll('.modal-overlay.open').forEach(m=>m.classList.remove('open'));
+  if(e.key==='Enter'&&document.activeElement.id==='l-pass')doLogin();
 });
-document.querySelectorAll('.modal-overlay').forEach(m => {
-  m.addEventListener('click', e => { if (e.target===m) m.classList.remove('open'); });
-});
+document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});});
 
 // ── BOOT ──────────────────────────────────────────────────────────────────────
-(function boot() {
-  try {
-    const stored = localStorage.getItem('cms_user');
-    if (stored && getAccess()) { currentUser = JSON.parse(stored); showApp(); }
-  } catch(e) {}
+(function boot(){
+  try{const s=localStorage.getItem('cms_user');if(s&&getAccess()){currentUser=JSON.parse(s);showApp();}}catch(e){}
 })();
 </script>
 </body>

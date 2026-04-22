@@ -1,6 +1,7 @@
 from rest_framework import serializers 
 from .models import *
 from cloudinary.utils import cloudinary_url
+import cloudinary
 
 
 class DepartmentSerializer(serializers.ModelSerializer):
@@ -57,14 +58,25 @@ class IncomingSerializer(serializers.ModelSerializer):
     file_url = serializers.SerializerMethodField()
 
     def get_file_url(self, obj):
-        if obj.file:
-            url, _ = cloudinary_url(str(obj.file), resource_type='raw', secure=True)
+        if obj.file and obj.file.public_id:
+            public_id_with_ext = obj.file.public_id
+            if not public_id_with_ext.endswith('.pdf'):
+                public_id_with_ext += '.pdf'
+
+            
+            url, options = cloudinary_url(
+                public_id_with_ext,
+                resource_type='raw',          
+                flags='attachment',           
+                sign_url=True,                
+                secure=True
+            )
             return url
         return None
     class Meta:
         model = IncomingCorrespondence
         fields = ['id', 'subject', 'source', 'source_external', 'received_date', 'filed', 'file', 'created_by', 'user_details', 'file_url',]
-        read_only_fields = ['created_by', 'user_details', 'file_url',]
+        read_only_fields = ['created_by', 'file_url',]
 
     def validate_file(self, value):
         if not value.name.endswith('.pdf'):
@@ -79,14 +91,25 @@ class DispatchSerializer(serializers.ModelSerializer):
     file_url = serializers.SerializerMethodField()
 
     def get_file_url(self, obj):
-        if obj.file:
-            url, _ = cloudinary_url(str(obj.file), resource_type='raw', secure=True)
+        if obj.file and obj.file.public_id:
+            public_id_with_ext = obj.file.public_id
+            if not public_id_with_ext.endswith('.pdf'):
+                public_id_with_ext += '.pdf'
+
+            
+            url, options = cloudinary_url(
+                public_id_with_ext,
+                resource_type='raw',          
+                flags='attachment',           
+                sign_url=True,                
+                secure=True
+            )
             return url
         return None
     class Meta:
         model = Dispatch
-        fields = ['id', 'subject', 'destination', 'dispatch_date', 'filed', 'approval', 'created_by', 'user_details', 'file_url']
-        read_only_fields = ['created_by', 'user_details', 'file_url']
+        fields = ['id', 'subject', 'destination', 'dispatch_date', 'filed', 'approval', 'created_by', 'user_details', 'file','file_url']
+        read_only_fields = ['created_by', 'file_url']
 
 
 
@@ -98,14 +121,25 @@ class LettersSerializer(serializers.ModelSerializer):
     file_url = serializers.SerializerMethodField()
 
     def get_file_url(self, obj):
-        if obj.file:
-            url, _ = cloudinary_url(str(obj.file), resource_type='raw', secure=True)
+        if obj.file and obj.file.public_id:
+            public_id_with_ext = obj.file.public_id
+            if not public_id_with_ext.endswith('.pdf'):
+                public_id_with_ext += '.pdf'
+
+            
+            url, options = cloudinary_url(
+                public_id_with_ext,
+                resource_type='raw',          
+                flags='attachment',           
+                sign_url=True,                
+                secure=True
+            )
             return url
         return None
     class Meta:
         model = Letters
         fields = ['id', 'subject', 'reference_number', 'receipient', 'date_sent', 'file', 'created_by', 'user_details', 'file_url']
-        read_only_fields = ['created_by', 'user_details', 'file_url']
+        read_only_fields = ['created_by', 'file_url']
 
     def validate_file(self, value):
         if not value.name.endswith('.pdf'):
