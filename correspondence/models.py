@@ -75,7 +75,6 @@ class CustomUser (AbstractBaseUser, PermissionsMixin):
 
 class IncomingCorrespondence(models.Model):
 
-
     subject = models.CharField(blank=False, max_length=150)
     source = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
     source_external = models.CharField(max_length=100, blank=True, null=True)
@@ -111,7 +110,4 @@ class Letters(models.Model):
 
     def __str__(self):
         return f"{self.subject}"
-    
-    
-
 
