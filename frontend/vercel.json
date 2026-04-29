@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/ghanapost_cms_v1_complete.html" }
+  ]
+}
