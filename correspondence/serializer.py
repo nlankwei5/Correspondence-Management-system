@@ -108,7 +108,7 @@ class DispatchSerializer(serializers.ModelSerializer):
         return None
     class Meta:
         model = Dispatch
-        fields = ['id', 'subject', 'destination', 'dispatch_date', 'filed', 'approval', 'created_by', 'user_details', 'file','file_url']
+        fields = ['id', 'subject', 'destination', 'dispatch_date', 'filed', 'approval', 'created_by', 'user_details','file_url']
         read_only_fields = ['created_by', 'file_url']
 
 
