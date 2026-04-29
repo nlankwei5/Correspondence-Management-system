@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/ghanapost_cms_v1_complete.html" }
+    { "source": "/(.*)", "destination": "/ghanapost_cms_v1.html" }
   ]
 }
