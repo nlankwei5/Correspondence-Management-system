@@ -197,7 +197,7 @@ cloudinary.config(
 
 
 CORS_ALLOWED_ORIGINS = [
-    'https://correspondence-management-system-3c.vercel.app/', 
+    'https://correspondence-management-system-3c.vercel.app', 
 ]
 
 CORS_ALLOW_CREDENTIALS = True
