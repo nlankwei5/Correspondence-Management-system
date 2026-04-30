@@ -89,6 +89,13 @@ class DispatchSerializer(serializers.ModelSerializer):
 
     user_details = CreatedBySerializer(source='created_by', read_only=True)
     file_url = serializers.SerializerMethodField()
+    destination = serializers.PrimaryKeyRelatedField(
+        queryset=Department.objects.all(),
+        many=True
+    )
+    filed = serializers.BooleanField(required=False, default=False)
+    approval = serializers.BooleanField(required=False, default=False)
+    
 
     def get_file_url(self, obj):
         if obj.file and obj.file.public_id:
@@ -108,7 +115,7 @@ class DispatchSerializer(serializers.ModelSerializer):
         return None
     class Meta:
         model = Dispatch
-        fields = ['id', 'subject', 'destination', 'dispatch_date', 'filed', 'approval', 'created_by', 'user_details','file_url']
+        fields = ['id', 'subject', 'destination', 'dispatch_date', 'filed', 'approval', 'created_by','file', 'user_details','file_url']
         read_only_fields = ['created_by', 'file_url']
 
 

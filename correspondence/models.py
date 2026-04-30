@@ -94,6 +94,7 @@ class Dispatch(models.Model):
     dispatch_date  = models.DateField(default=date.today)
     filed = models.BooleanField(default=False)
     approval = models.BooleanField(default=False)
+    file = CloudinaryField('file', resource_type='raw', allowed_formats=['pdf'], blank=True, null=True)
     created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL,null=True )
     
     def __str__(self):
